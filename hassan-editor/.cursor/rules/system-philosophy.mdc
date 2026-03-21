@@ -1,0 +1,75 @@
+---
+description: Core development philosophy governing all code changes in hassan-editor
+alwaysApply: true
+---
+
+# System Philosophy: Fast · Flexible · Visual · Testable
+
+## Philosophy Tree
+| Rule | Activates | Governs |
+|------|-----------|---------|
+| `system-philosophy.mdc` | Always | Architecture, development pace, agent autonomy |
+| `visualization-philosophy.mdc` | `src/**`, `public/**` | Visualization techniques, UI experiments, component design |
+
+## Philosophy-as-Documentation
+
+The `.cursor/rules/` philosophies are living rules — but they're also the README.
+When philosophies change, compile them into a readable, distilled list of rules
+in the **Rules** section near the top of `README.md`. The README is where
+a human (or agent) goes first. If the rules aren't there, they don't exist.
+
+Format: short prose per philosophy, not the full `.mdc` files. The README is the
+pitch; the `.mdc` files are the enforcement.
+
+## 1. Purpose
+
+Hassan Editor is an AI-assisted writing and visualization tool for complex,
+multi-timeline stories. It exists to help one author see, query, and reshape
+a novel — not to serve millions of users.
+
+## 2. Speed Over Scale
+
+- This is not a scalable product. It's a workbench.
+- Ship the fastest feature that works. Iterate from there.
+- If a feature takes more than a session to land, it's too big. Break it down.
+- Prefer adding a new endpoint + a new UI panel over redesigning existing ones.
+
+## 3. Flexibility Over Perfection
+
+- The app must be easy to extend. New visualization? New query technique? Small, localized change.
+- Thin vertical slices: feature = own file + own route + own tests.
+- No deep abstractions. Flat is better than nested. Direct is better than clever.
+- SQLite is the entire backend. No ORM layers. Raw SQL is fine.
+
+## 4. Visualization as a First-Class Concern
+
+- Every interesting dimension of the novel (arc, timeline, status, word count, provenance)
+  should be visualizable with minimal effort.
+- Try different techniques freely: graphs, kanban, timelines, heatmaps, trees.
+- Visualization code should be self-contained components that can be swapped or removed cleanly.
+- The goal is insight, not polish. A rough chart that reveals structure beats a pretty one that doesn't.
+
+## 5. Tests Cover Stability
+
+- Every API endpoint gets tests. Every new feature gets tests in the same session.
+- Tests are the safety net that lets you move fast. No tests = no confidence = no speed.
+- Test the contracts (HTTP status codes, response shapes, edge cases), not the implementation.
+- Vitest + supertest for the API. Keep tests fast — in-memory SQLite, no external deps.
+
+## 6. Provenance is Sacred
+
+- `GOLD` scenes are the author's original words. Immutable. Never overwritten.
+- All AI-generated or edited content is tagged (`EDITED`, `EXTRAPOLATED`).
+- Revisions are snapshots, not diffs. You can always get back to what was written by hand.
+
+## 7. Agent Autonomy
+
+- Full read/write/exec in this repo. No per-action approval.
+- Non-destructive: no force-push, no deleting the database, no overwriting GOLD content.
+- Ship complete: feature + tests + README update in one pass.
+
+## 8. Cameron Protocol
+
+- Kai talks in fragments and trail-offs. Fill the gaps from context — don't ask, build.
+- Incomplete sentence = enough signal. If 80% clear, ship it.
+- Match energy: direct, no preamble. Code speaks. Ship speaks.

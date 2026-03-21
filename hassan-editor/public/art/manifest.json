@@ -1,0 +1,1534 @@
+[
+  {
+    "file": "art/characters-earth/raven.png",
+    "title": "Raven",
+    "scrivener_path": "Characters/Earth - 2069/Callsign \"Paperwing\"/Raven",
+    "category": "characters-earth",
+    "uuid": "AAEAA0D1-2AC7-4E7F-8CA2-6D04AE597956",
+    "ext": ".png",
+    "size": 3696421
+  },
+  {
+    "file": "art/characters-earth/elvira.jpg",
+    "title": "Elvira",
+    "scrivener_path": "Characters/Earth - 2069/Elvira/Elvira",
+    "category": "characters-earth",
+    "uuid": "1159CDEA-0948-412B-A55A-D066C56367F9",
+    "ext": ".jpg",
+    "size": 64548
+  },
+  {
+    "file": "art/characters-earth/elvira-24.jpg",
+    "title": "Elvira, 24",
+    "scrivener_path": "Characters/Earth - 2069/Elvira/Elvira, 24",
+    "category": "characters-earth",
+    "uuid": "8EC88426-2C3D-4453-B34E-AD851B4BF76F",
+    "ext": ".jpg",
+    "size": 234480,
+    "notes": "Femme Fatale; like Nikita;\n\n7 of Swords (but good in potential)"
+  },
+  {
+    "file": "art/characters-earth/elvira-26-performing-as-ava.jpeg",
+    "title": "Elvira, 26, performing as AVA",
+    "scrivener_path": "Characters/Earth - 2069/Elvira/Elvira, 26, performing as AVA",
+    "category": "characters-earth",
+    "uuid": "D35285AA-2F3D-4669-A6C1-960F2B70D83F",
+    "ext": ".jpeg",
+    "size": 212336,
+    "notes": "performing as AVA"
+  },
+  {
+    "file": "art/characters-earth/high-priestess.jpg",
+    "title": "High Priestess",
+    "scrivener_path": "Characters/Earth - 2069/Elvira/High Priestess",
+    "category": "characters-earth",
+    "uuid": "3BB3AAF8-B3CE-4708-8422-041184DBF754",
+    "ext": ".jpg",
+    "size": 604345
+  },
+  {
+    "file": "art/characters-earth/queen-of-swords.jpg",
+    "title": "Queen of Swords",
+    "scrivener_path": "Characters/Earth - 2069/Elvira/Queen of Swords",
+    "category": "characters-earth",
+    "uuid": "8BE09956-09A8-4DF0-AF59-59E5FF09D0CC",
+    "ext": ".jpg",
+    "size": 817537
+  },
+  {
+    "file": "art/characters-earth/rachel-front.webp",
+    "title": "Rachel front",
+    "scrivener_path": "Characters/Earth - 2069/Elvira/Rachel front",
+    "category": "characters-earth",
+    "uuid": "9F9DE5F8-CACB-452B-8EDF-862755AE509C",
+    "ext": ".webp",
+    "size": 29338
+  },
+  {
+    "file": "art/characters-earth/rachel-smoking.webp",
+    "title": "Rachel smoking",
+    "scrivener_path": "Characters/Earth - 2069/Elvira/Rachel smoking",
+    "category": "characters-earth",
+    "uuid": "6A80BD60-E6C5-458E-B6F3-0E470FD1791B",
+    "ext": ".webp",
+    "size": 345238
+  },
+  {
+    "file": "art/characters-earth/la-femme-nikita.jpg",
+    "title": "la femme nikita",
+    "scrivener_path": "Characters/Earth - 2069/Elvira/la femme nikita",
+    "category": "characters-earth",
+    "uuid": "37CC1B9C-6F35-4D8A-970A-1FA4E3A0231E",
+    "ext": ".jpg",
+    "size": 482888
+  },
+  {
+    "file": "art/characters-earth/al-fullmetal.webp",
+    "title": "Al Fullmetal",
+    "scrivener_path": "Characters/Earth - 2069/Hanu/Al Fullmetal",
+    "category": "characters-earth",
+    "uuid": "4D1272C4-2F29-4646-B18E-EF6C3558FC28",
+    "ext": ".webp",
+    "size": 35448
+  },
+  {
+    "file": "art/characters-earth/fortitude.jpg",
+    "title": "Fortitude",
+    "scrivener_path": "Characters/Earth - 2069/Hanu/Fortitude",
+    "category": "characters-earth",
+    "uuid": "6C81902B-FE3C-4942-B7DC-7A2230E5DBDE",
+    "ext": ".jpg",
+    "size": 543264,
+    "notes": "Inner strength; Loyalty"
+  },
+  {
+    "file": "art/characters-earth/hanuoid.jpg",
+    "title": "Hanuoid",
+    "scrivener_path": "Characters/Earth - 2069/Hanu/Hanuoid",
+    "category": "characters-earth",
+    "uuid": "16BFB04B-09A0-45A6-AC78-D380D865ED97",
+    "ext": ".jpg",
+    "size": 14285
+  },
+  {
+    "file": "art/characters-earth/prototype-hanunoid.jpeg",
+    "title": "Prototype Hanunoid",
+    "scrivener_path": "Characters/Earth - 2069/Hanu/Prototype Hanunoid",
+    "category": "characters-earth",
+    "uuid": "DA734453-F826-4170-B3FD-B235B01AA64D",
+    "ext": ".jpeg",
+    "size": 280490
+  },
+  {
+    "file": "art/characters-earth/screenshot-2025-04-24-at-105702-am.png",
+    "title": "Screenshot 2025-04-24 at 10.57.02\u202fAM",
+    "scrivener_path": "Characters/Earth - 2069/Hanu/Screenshot 2025-04-24 at 10.57.02\u202fAM",
+    "category": "characters-earth",
+    "uuid": "73CF3D7D-49BF-461D-B12C-525F8572B66D",
+    "ext": ".png",
+    "size": 341396
+  },
+  {
+    "file": "art/characters-earth/shamm.jpg",
+    "title": "Shamm",
+    "scrivener_path": "Characters/Earth - 2069/Hanu/Shamm",
+    "category": "characters-earth",
+    "uuid": "CCD5F918-63C0-4519-B2D6-B96B5C4189C8",
+    "ext": ".jpg",
+    "size": 37050
+  },
+  {
+    "file": "art/characters-earth/whore-jane-and-giggolo-joe.webp",
+    "title": "Whore Jane and Giggolo Joe",
+    "scrivener_path": "Characters/Earth - 2069/Hanu/Whore Jane and Giggolo Joe",
+    "category": "characters-earth",
+    "uuid": "8EB1EFD1-3B51-4BF8-A80A-5D1D3C0E1CCA",
+    "ext": ".webp",
+    "size": 142886,
+    "notes": "Rosie and Hanu \u201cdressed up\u201d for each in sexbot bodies."
+  },
+  {
+    "file": "art/characters-earth/john-henry-statue.jpg",
+    "title": "John Henry statue",
+    "scrivener_path": "Characters/Earth - 2069/Henry John/John Henry statue",
+    "category": "characters-earth",
+    "uuid": "7D31B066-230C-4B68-B4B5-8C51968E18B1",
+    "ext": ".jpg",
+    "size": 151804
+  },
+  {
+    "file": "art/characters-earth/rig-back-side.jpeg",
+    "title": "rig back side",
+    "scrivener_path": "Characters/Earth - 2069/Henry John/rig back side",
+    "category": "characters-earth",
+    "uuid": "6C2EBA9E-4D5B-45C0-AF81-D14F9FCD5128",
+    "ext": ".jpeg",
+    "size": 320817
+  },
+  {
+    "file": "art/characters-earth/rig-back-side-full.jpeg",
+    "title": "rig back side full",
+    "scrivener_path": "Characters/Earth - 2069/Henry John/rig back side full",
+    "category": "characters-earth",
+    "uuid": "1C464826-C510-45A1-89C3-A780E2555832",
+    "ext": ".jpeg",
+    "size": 310879
+  },
+  {
+    "file": "art/characters-earth/rig-crane-telescoped.jpeg",
+    "title": "rig crane telescoped",
+    "scrivener_path": "Characters/Earth - 2069/Henry John/rig crane telescoped",
+    "category": "characters-earth",
+    "uuid": "703146AD-EC15-4787-A3D1-F0D6C287B2B8",
+    "ext": ".jpeg",
+    "size": 78395
+  },
+  {
+    "file": "art/characters-earth/rig-front-side.jpeg",
+    "title": "rig front side",
+    "scrivener_path": "Characters/Earth - 2069/Henry John/rig front side",
+    "category": "characters-earth",
+    "uuid": "CC36B92A-A0CC-4533-98EA-082A3AD2C2E8",
+    "ext": ".jpeg",
+    "size": 362947
+  },
+  {
+    "file": "art/characters-earth/gong-li-to-live.jpg",
+    "title": "Gong Li to live",
+    "scrivener_path": "Characters/Earth - 2069/Lola Dawn/Gong Li to live",
+    "category": "characters-earth",
+    "uuid": "C0E77507-6ABB-4AB3-AE2D-65AB2425361E",
+    "ext": ".jpg",
+    "size": 30192
+  },
+  {
+    "file": "art/characters-earth/gong-li-to-live-with-child.jpg",
+    "title": "Gong li to live with child",
+    "scrivener_path": "Characters/Earth - 2069/Lola Dawn/Gong li to live with child",
+    "category": "characters-earth",
+    "uuid": "8085ACE7-E04C-4F3B-A950-C94E39113387",
+    "ext": ".jpg",
+    "size": 330167
+  },
+  {
+    "file": "art/characters-earth/lola-dawn-composite-55.png",
+    "title": "Lola Dawn composite, 55",
+    "scrivener_path": "Characters/Earth - 2069/Lola Dawn/Lola Dawn composite, 55",
+    "category": "characters-earth",
+    "uuid": "0B8D809F-69CE-4ED9-81F8-E3AAF6CB44CE",
+    "ext": ".png",
+    "size": 1514745,
+    "notes": "Gong Li + Lola Albright"
+  },
+  {
+    "file": "art/characters-earth/qinwen-zheng.jpg",
+    "title": "Qinwen Zheng",
+    "scrivener_path": "Characters/Earth - 2069/Lola Dawn/Qinwen Zheng",
+    "category": "characters-earth",
+    "uuid": "E5F7A73F-2607-4ACC-82AB-4E42E75B21C1",
+    "ext": ".jpg",
+    "size": 1455517
+  },
+  {
+    "file": "art/characters-earth/teresa-teng.jpg",
+    "title": "Teresa Teng",
+    "scrivener_path": "Characters/Earth - 2069/Lola Dawn/Teresa Teng",
+    "category": "characters-earth",
+    "uuid": "FC2547FE-7184-4C0C-85BA-D2D2D16540D2",
+    "ext": ".jpg",
+    "size": 110851
+  },
+  {
+    "file": "art/characters-earth/the-emperor.jpg",
+    "title": "The Emperor",
+    "scrivener_path": "Characters/Earth - 2069/Lola Dawn/The Emperor",
+    "category": "characters-earth",
+    "uuid": "9A279AC1-86F2-4BDF-9781-D42F1133CAE9",
+    "ext": ".jpg",
+    "size": 639057
+  },
+  {
+    "file": "art/characters-earth/the-moon.jpg",
+    "title": "The Moon",
+    "scrivener_path": "Characters/Earth - 2069/Lola Dawn/The Moon",
+    "category": "characters-earth",
+    "uuid": "8DBAFDEB-B868-4B3B-B04B-C371DB57F8F1",
+    "ext": ".jpg",
+    "size": 583439,
+    "notes": "Hidden truths"
+  },
+  {
+    "file": "art/characters-earth/dfw---the-entertainment.jpg",
+    "title": "DFW - The Entertainment",
+    "scrivener_path": "Characters/Earth - 2069/Marcos de Anza/DFW - The Entertainment",
+    "category": "characters-earth",
+    "uuid": "65792835-2EA0-4600-9ED5-C03B1EF5E03E",
+    "ext": ".jpg",
+    "size": 342282
+  },
+  {
+    "file": "art/characters-earth/marcos-room.jpeg",
+    "title": "Marco's room",
+    "scrivener_path": "Characters/Earth - 2069/Marcos de Anza/Marco's room",
+    "category": "characters-earth",
+    "uuid": "86E3A9E6-974F-4250-9DC3-8F55C6565ABD",
+    "ext": ".jpeg",
+    "size": 399951
+  },
+  {
+    "file": "art/characters-earth/obsession-art.jpeg",
+    "title": "Obsession; Art",
+    "scrivener_path": "Characters/Earth - 2069/Marcos de Anza/Obsession; Art",
+    "category": "characters-earth",
+    "uuid": "A3459F52-773B-4BE4-ADBB-5F056C32DF8D",
+    "ext": ".jpeg",
+    "size": 347898
+  },
+  {
+    "file": "art/characters-earth/the-hanged-man.jpg",
+    "title": "The Hanged Man",
+    "scrivener_path": "Characters/Earth - 2069/Marcos de Anza/The Hanged Man",
+    "category": "characters-earth",
+    "uuid": "7EE66725-DC3D-4965-9678-7C5D823501B2",
+    "ext": ".jpg",
+    "size": 630893
+  },
+  {
+    "file": "art/characters-earth/werner-herzog-mentor.webp",
+    "title": "Werner Herzog, mentor",
+    "scrivener_path": "Characters/Earth - 2069/Marcos de Anza/Werner Herzog, mentor",
+    "category": "characters-earth",
+    "uuid": "6C407146-341A-467F-8DF2-AD44173876CD",
+    "ext": ".webp",
+    "size": 145704
+  },
+  {
+    "file": "art/characters-earth/young-picasso.jpg",
+    "title": "Young Picasso",
+    "scrivener_path": "Characters/Earth - 2069/Marcos de Anza/Young Picasso",
+    "category": "characters-earth",
+    "uuid": "F4ECFCC3-1297-492A-BC27-4BCB11D967F7",
+    "ext": ".jpg",
+    "size": 430404
+  },
+  {
+    "file": "art/characters-earth/king-of-cups.jpg",
+    "title": "King of Cups",
+    "scrivener_path": "Characters/Earth - 2069/Nolen Dawn/King of Cups",
+    "category": "characters-earth",
+    "uuid": "7E1A4B42-848C-4464-9249-C539CEB6A7E2",
+    "ext": ".jpg",
+    "size": 615781
+  },
+  {
+    "file": "art/characters-earth/knight-of-cups.jpg",
+    "title": "Knight of Cups",
+    "scrivener_path": "Characters/Earth - 2069/Nolen Dawn/Knight of Cups",
+    "category": "characters-earth",
+    "uuid": "D566B6BA-0607-4690-80C7-BF7BFB63460F",
+    "ext": ".jpg",
+    "size": 619735,
+    "notes": "Hi fat suit is an artifice"
+  },
+  {
+    "file": "art/characters-earth/logan-roy-nolen-dawn-78.jpg",
+    "title": "Logan Roy / Nolen Dawn, 78",
+    "scrivener_path": "Characters/Earth - 2069/Nolen Dawn/Logan Roy / Nolen Dawn, 78",
+    "category": "characters-earth",
+    "uuid": "F73193A7-16DB-437B-AF26-B8B728BD6E19",
+    "ext": ".jpg",
+    "size": 643943,
+    "notes": "inspiration for Nolen Dawn\n\nElon Musk was born on June 28, 1971.\nSo on January 1st, 2069, he would be:\n\ud83d\udc49 97 years old.\n\n\nHe is dying; Imagine, what would Elon do in the last year of his life? And with the rise of real Superintelligence\n\nOld, yes. Bitter, maybe. But definitely not a nihilist. He belives in the future even as the world struggles. He believes in willpower, grit, and order."
+  },
+  {
+    "file": "art/characters-earth/nolens-shipyard.jpeg",
+    "title": "Nolen's shipyard",
+    "scrivener_path": "Characters/Earth - 2069/Nolen Dawn/Nolen's shipyard",
+    "category": "characters-earth",
+    "uuid": "2361DB26-9F3A-46F7-A554-D4C7CD518EE6",
+    "ext": ".jpeg",
+    "size": 1050125
+  },
+  {
+    "file": "art/characters-earth/nolens-yatch.jpeg",
+    "title": "Nolen's yatch",
+    "scrivener_path": "Characters/Earth - 2069/Nolen Dawn/Nolen's yatch",
+    "category": "characters-earth",
+    "uuid": "084EBE0B-C50C-4934-A91D-68385CD1AC19",
+    "ext": ".jpeg",
+    "size": 390522
+  },
+  {
+    "file": "art/characters-earth/ace-ventura-pet-detective.jpg",
+    "title": "Ace Ventura pet detective",
+    "scrivener_path": "Characters/Earth - 2069/Pace Tom/Ace Ventura pet detective",
+    "category": "characters-earth",
+    "uuid": "A442E34A-4A33-4188-96DE-B5EB49B14534",
+    "ext": ".jpg",
+    "size": 43011
+  },
+  {
+    "file": "art/characters-earth/andy-lau-smoking-27.webp",
+    "title": "Andy Lau smoking, 27",
+    "scrivener_path": "Characters/Earth - 2069/Pace Tom/Andy Lau smoking, 27",
+    "category": "characters-earth",
+    "uuid": "09D51846-6819-40F3-97A7-0458CD595A4E",
+    "ext": ".webp",
+    "size": 34808
+  },
+  {
+    "file": "art/characters-earth/astral-bike-core-metatron.gif",
+    "title": "Astral Bike core: METATRON",
+    "scrivener_path": "Characters/Earth - 2069/Pace Tom/Astral Bike core: METATRON",
+    "category": "characters-earth",
+    "uuid": "E1E050BF-E310-49D7-890A-CA5EDAF8C7EE",
+    "ext": ".gif",
+    "size": 41452
+  },
+  {
+    "file": "art/characters-earth/bang-bang-cowboy.webp",
+    "title": "Bang bang cowboy",
+    "scrivener_path": "Characters/Earth - 2069/Pace Tom/Bang bang cowboy",
+    "category": "characters-earth",
+    "uuid": "FD841239-BCB9-4116-8638-7ABE370C4E8F",
+    "ext": ".webp",
+    "size": 124480
+  },
+  {
+    "file": "art/characters-earth/bazzar-exchange.jpeg",
+    "title": "Bazzar Exchange",
+    "scrivener_path": "Characters/Earth - 2069/Pace Tom/Bazzar Exchange",
+    "category": "characters-earth",
+    "uuid": "931A126C-F703-4049-B3E8-ABC7234CAB2F",
+    "ext": ".jpeg",
+    "size": 375335
+  },
+  {
+    "file": "art/characters-earth/bob-dylan-stare.jpg",
+    "title": "Bob Dylan stare",
+    "scrivener_path": "Characters/Earth - 2069/Pace Tom/Bob Dylan stare",
+    "category": "characters-earth",
+    "uuid": "820C0024-F9FD-4D5F-BCAD-BA8EAAB0F264",
+    "ext": ".jpg",
+    "size": 47283
+  },
+  {
+    "file": "art/characters-earth/brad-pitt---f1.png",
+    "title": "Brad Pitt - F1",
+    "scrivener_path": "Characters/Earth - 2069/Pace Tom/Brad Pitt - F1",
+    "category": "characters-earth",
+    "uuid": "FF246D61-179A-4C2D-9E0E-2BE2FDB284A3",
+    "ext": ".png",
+    "size": 945471
+  },
+  {
+    "file": "art/characters-earth/deckard.webp",
+    "title": "Deckard",
+    "scrivener_path": "Characters/Earth - 2069/Pace Tom/Deckard",
+    "category": "characters-earth",
+    "uuid": "C5DD04D3-9178-4D56-B43E-46212D70D094",
+    "ext": ".webp",
+    "size": 19088
+  },
+  {
+    "file": "art/characters-earth/fallen-angel.webp",
+    "title": "Fallen Angel",
+    "scrivener_path": "Characters/Earth - 2069/Pace Tom/Fallen Angel",
+    "category": "characters-earth",
+    "uuid": "214D2398-5A77-44A0-81BD-8BF3C2C3B1D9",
+    "ext": ".webp",
+    "size": 75418
+  },
+  {
+    "file": "art/characters-earth/howl.jpg",
+    "title": "Howl",
+    "scrivener_path": "Characters/Earth - 2069/Pace Tom/Howl",
+    "category": "characters-earth",
+    "uuid": "2DE4BB47-EF3B-496D-86D9-BDC739F852C4",
+    "ext": ".jpg",
+    "size": 114823
+  },
+  {
+    "file": "art/characters-earth/justice.jpg",
+    "title": "Justice",
+    "scrivener_path": "Characters/Earth - 2069/Pace Tom/Justice",
+    "category": "characters-earth",
+    "uuid": "6FB11DB4-A72C-4EAE-85E8-110D63293D86",
+    "ext": ".jpg",
+    "size": 893399
+  },
+  {
+    "file": "art/characters-earth/korben-dallas.jpg",
+    "title": "Korben Dallas",
+    "scrivener_path": "Characters/Earth - 2069/Pace Tom/Korben Dallas",
+    "category": "characters-earth",
+    "uuid": "369EB588-D675-457E-A62E-CD5650A676F1",
+    "ext": ".jpg",
+    "size": 58724
+  },
+  {
+    "file": "art/characters-earth/le-samourai.webp",
+    "title": "Le Samourai",
+    "scrivener_path": "Characters/Earth - 2069/Pace Tom/Le Samourai",
+    "category": "characters-earth",
+    "uuid": "07C1D72A-8AEC-49E9-A1C2-E222A6D6F861",
+    "ext": ".webp",
+    "size": 20940
+  },
+  {
+    "file": "art/characters-earth/le-samourai-room.webp",
+    "title": "Le Samourai room",
+    "scrivener_path": "Characters/Earth - 2069/Pace Tom/Le Samourai room",
+    "category": "characters-earth",
+    "uuid": "2EC279EA-8989-4BFB-BA15-A87833D8CB38",
+    "ext": ".webp",
+    "size": 20832
+  },
+  {
+    "file": "art/characters-earth/smirking-bruce.jpg",
+    "title": "Smirking Bruce",
+    "scrivener_path": "Characters/Earth - 2069/Pace Tom/Smirking Bruce",
+    "category": "characters-earth",
+    "uuid": "025D224A-15D3-4919-AA06-15779C852721",
+    "ext": ".jpg",
+    "size": 57047
+  },
+  {
+    "file": "art/characters-earth/spike.jpg",
+    "title": "Spike",
+    "scrivener_path": "Characters/Earth - 2069/Pace Tom/Spike",
+    "category": "characters-earth",
+    "uuid": "D9662CCD-3445-49F1-8B60-389C7E787FD1",
+    "ext": ".jpg",
+    "size": 14516
+  },
+  {
+    "file": "art/characters-earth/sweet-jp.jpg",
+    "title": "Sweet JP",
+    "scrivener_path": "Characters/Earth - 2069/Pace Tom/Sweet JP",
+    "category": "characters-earth",
+    "uuid": "D251DDDB-5520-4B81-B336-320D4E3885CC",
+    "ext": ".jpg",
+    "size": 213108
+  },
+  {
+    "file": "art/characters-earth/the-fool.jpg",
+    "title": "The Fool",
+    "scrivener_path": "Characters/Earth - 2069/Pace Tom/The Fool",
+    "category": "characters-earth",
+    "uuid": "84CAB92D-3D2D-4980-9C91-A044A6C5F38F",
+    "ext": ".jpg",
+    "size": 537374
+  },
+  {
+    "file": "art/characters-earth/wah-dee-on-bike.png",
+    "title": "Wah Dee on bike",
+    "scrivener_path": "Characters/Earth - 2069/Pace Tom/Wah Dee on bike",
+    "category": "characters-earth",
+    "uuid": "7B4BB8D9-461C-44CB-94A6-9DC2BC7FFA11",
+    "ext": ".png",
+    "size": 2393994
+  },
+  {
+    "file": "art/characters-earth/who-are-you-looking-at.webp",
+    "title": "Who are you looking at?",
+    "scrivener_path": "Characters/Earth - 2069/Pace Tom/Who are you looking at?",
+    "category": "characters-earth",
+    "uuid": "C3844022-F9F8-49D2-8312-8EECBE670A16",
+    "ext": ".webp",
+    "size": 32616
+  },
+  {
+    "file": "art/characters-earth/joe-black-dinner.jpg",
+    "title": "joe black dinner",
+    "scrivener_path": "Characters/Earth - 2069/Pace Tom/joe black dinner",
+    "category": "characters-earth",
+    "uuid": "9F957563-B9C8-4CAA-985C-CAAB73505657",
+    "ext": ".jpg",
+    "size": 167157
+  },
+  {
+    "file": "art/characters-earth/joe-black-pb.jpg",
+    "title": "joe black pb",
+    "scrivener_path": "Characters/Earth - 2069/Pace Tom/joe black pb",
+    "category": "characters-earth",
+    "uuid": "9FABE727-CF37-4E55-A185-22541563EF1A",
+    "ext": ".jpg",
+    "size": 72754
+  },
+  {
+    "file": "art/characters-earth/the-many-inspirations-for-spike-spiegel-basically-hes-a-v0-ng3tuhnt0sub1jpg.webp",
+    "title": "the-many-inspirations-for-spike-spiegel-basically-hes-a-v0-ng3tuhnt0sub1.jpg",
+    "scrivener_path": "Characters/Earth - 2069/Pace Tom/the-many-inspirations-for-spike-spiegel-basically-hes-a-v0-ng3tuhnt0sub1.jpg",
+    "category": "characters-earth",
+    "uuid": "6B9CBFE5-0270-4425-B85E-F886EE6026DD",
+    "ext": ".webp",
+    "size": 66860
+  },
+  {
+    "file": "art/characters-earth/rayna-car-fit.png",
+    "title": "Rayna car fit",
+    "scrivener_path": "Characters/Earth - 2069/Raya/Rayna car fit",
+    "category": "characters-earth",
+    "uuid": "229E8DBB-DD35-4B4C-83EA-1954449944BD",
+    "ext": ".png",
+    "size": 2727784
+  },
+  {
+    "file": "art/characters-earth/rosey.webp",
+    "title": "Rosey",
+    "scrivener_path": "Characters/Earth - 2069/Rosie/Rosey",
+    "category": "characters-earth",
+    "uuid": "C368EB18-5BF4-4A33-930D-71E830A48C84",
+    "ext": ".webp",
+    "size": 14202
+  },
+  {
+    "file": "art/characters-earth/the-hermit.jpg",
+    "title": "The Hermit",
+    "scrivener_path": "Characters/Earth - 2069/Tian Lee/The Hermit",
+    "category": "characters-earth",
+    "uuid": "50A55ECE-20CE-498D-B450-FDFA41D7EE95",
+    "ext": ".jpg",
+    "size": 483179
+  },
+  {
+    "file": "art/characters-earth/tony-leung-chiu-wai-policeman.jpg",
+    "title": "Tony Leung Chiu-wai policeman",
+    "scrivener_path": "Characters/Earth - 2069/Tian Lee/Tony Leung Chiu-wai policeman",
+    "category": "characters-earth",
+    "uuid": "10346E08-C29C-41A9-8D64-1D3E000F12C2",
+    "ext": ".jpg",
+    "size": 96929
+  },
+  {
+    "file": "art/characters-earth/tony-leung-chiu-wai-smoking.jpg",
+    "title": "Tony Leung Chiu-wai smoking",
+    "scrivener_path": "Characters/Earth - 2069/Tian Lee/Tony Leung Chiu-wai smoking",
+    "category": "characters-earth",
+    "uuid": "EDCC89AB-4244-4BD7-B7B8-A8EBBE4F5C3F",
+    "ext": ".jpg",
+    "size": 150211
+  },
+  {
+    "file": "art/characters-earth/tony-leung-ka-fai-tony-leung-ka-fai-tony-leung-ka-fai-front.gif",
+    "title": "Tony Leung Ka-fai\nTony Leung Ka-fai\nTony Leung Ka-fai front",
+    "scrivener_path": "Characters/Earth - 2069/Tian Lee/Tony Leung Ka-fai\nTony Leung Ka-fai\nTony Leung Ka-fai front",
+    "category": "characters-earth",
+    "uuid": "EA2F2AC4-A78D-4F5C-A8D7-EF2F15569002",
+    "ext": ".gif",
+    "size": 1019528
+  },
+  {
+    "file": "art/characters-earth/vera.png",
+    "title": "Vera",
+    "scrivener_path": "Characters/Earth - 2069/Vera/Vera",
+    "category": "characters-earth",
+    "uuid": "AFBD3EB7-673A-4E62-81E8-9F538F85CFED",
+    "ext": ".png",
+    "size": 2092985
+  },
+  {
+    "file": "art/characters-hassan/ahrah.png",
+    "title": "Ahrah",
+    "scrivener_path": "Characters/Hassan - Kali Yuga/Aharaha/Ahrah",
+    "category": "characters-hassan",
+    "uuid": "CD32A603-C8F3-4317-95FB-4ADA69BC173D",
+    "ext": ".png",
+    "size": 1284401
+  },
+  {
+    "file": "art/characters-hassan/move-this-rock.png",
+    "title": "Move this rock",
+    "scrivener_path": "Characters/Hassan - Kali Yuga/Aharaha/Move this rock",
+    "category": "characters-hassan",
+    "uuid": "9F0C405C-23BA-44C2-9A83-542791F70227",
+    "ext": ".png",
+    "size": 1669757
+  },
+  {
+    "file": "art/characters-hassan/mulan-taking-her-vow.jpeg",
+    "title": "Mulan taking her vow",
+    "scrivener_path": "Characters/Hassan - Kali Yuga/Aharaha/Mulan taking her vow",
+    "category": "characters-hassan",
+    "uuid": "AD99CBC1-742C-40C8-93D8-C40266571B60",
+    "ext": ".jpeg",
+    "size": 51004
+  },
+  {
+    "file": "art/characters-hassan/shu-qi-blocking-assassin.png",
+    "title": "Shu Qi blocking assassin",
+    "scrivener_path": "Characters/Hassan - Kali Yuga/Aharaha/Shu Qi blocking assassin",
+    "category": "characters-hassan",
+    "uuid": "7587A2E4-88ED-41A2-B6C1-8D53859B5CBD",
+    "ext": ".png",
+    "size": 6768270,
+    "notes": "Anais."
+  },
+  {
+    "file": "art/characters-hassan/what-if-azula-was-good.jpg",
+    "title": "What if Azula was good?",
+    "scrivener_path": "Characters/Hassan - Kali Yuga/Aharaha/What if Azula was good?",
+    "category": "characters-hassan",
+    "uuid": "A431FF35-4A1F-4660-A60A-3A5661A9A74E",
+    "ext": ".jpg",
+    "size": 61532,
+    "notes": "\u201cCan she do that?\u201d"
+  },
+  {
+    "file": "art/characters-hassan/the-assassin-walking.jpg",
+    "title": "the assassin walking",
+    "scrivener_path": "Characters/Hassan - Kali Yuga/Aharaha/the assassin walking",
+    "category": "characters-hassan",
+    "uuid": "413546E8-1759-44A6-AEA2-FD9A305B4982",
+    "ext": ".jpg",
+    "size": 138081
+  },
+  {
+    "file": "art/characters-hassan/grand-duchess-anastasia-nikolaevna-of-russia.jpg",
+    "title": "Grand Duchess Anastasia Nikolaevna of Russia\n",
+    "scrivener_path": "Characters/Hassan - Kali Yuga/Anais/Grand Duchess Anastasia Nikolaevna of Russia\n",
+    "category": "characters-hassan",
+    "uuid": "6E033771-C174-45D1-8FB5-6C3DC6BC9D85",
+    "ext": ".jpg",
+    "size": 406479
+  },
+  {
+    "file": "art/characters-hassan/guo-pei-pink.jpg",
+    "title": "Guo Pei pink",
+    "scrivener_path": "Characters/Hassan - Kali Yuga/Anais/Guo Pei pink",
+    "category": "characters-hassan",
+    "uuid": "3A5F2E69-4513-4400-B107-A8149D980051",
+    "ext": ".jpg",
+    "size": 89843
+  },
+  {
+    "file": "art/characters-hassan/heavenly-sword-kai.webp",
+    "title": "Heavenly Sword Kai",
+    "scrivener_path": "Characters/Hassan - Kali Yuga/Anais/Heavenly Sword Kai",
+    "category": "characters-hassan",
+    "uuid": "10ACFF4D-4299-48C7-907A-4B6F7FAB18D0",
+    "ext": ".webp",
+    "size": 20362,
+    "notes": "Kai appears to be in her late teens, yet possesses a child-like outlook on life. Her level of immaturity can most likely be attributed to the fact that her mother, as well as her entire clan, was murdered when she was young, thereby traumatizing her to the point where her mind created a sort of \"happy place\", where the problems going on around her couldn't reach. She isn't completely unaware of the violence around her or the seriousness of a situation, though; an example is in Chapter Three, when she goes on a rescue mission to free Nariko from Bohan's prison. Kai's appearance seems to resemble her personality as well. The developers wanted Kai to possess catlike behaviour (for example, when climbing ladders or when jumping on the wooden beams in the Fireworks section of Chapter 3) and appearance, as seen in unlockable developers' logs."
+  },
+  {
+    "file": "art/characters-hassan/heavenly-sword-kai-sketch.jpg",
+    "title": "Heavenly Sword Kai sketch",
+    "scrivener_path": "Characters/Hassan - Kali Yuga/Anais/Heavenly Sword Kai sketch",
+    "category": "characters-hassan",
+    "uuid": "DF984CDE-7C64-43E1-BF9B-394079E3D588",
+    "ext": ".jpg",
+    "size": 83058,
+    "notes": "Although not possessing any skill whatsoever in terms of close combat, Kai's skill with a crossbow is virtually unmatched. As shown in Riding High, she can even fire with her unerring skill while hanging upside-down by a single foot."
+  },
+  {
+    "file": "art/characters-hassan/melfina.jpg",
+    "title": "Melfina",
+    "scrivener_path": "Characters/Hassan - Kali Yuga/Anais/Melfina",
+    "category": "characters-hassan",
+    "uuid": "E6688F27-2598-4F3E-A7C0-7D45FD8F8D6A",
+    "ext": ".jpg",
+    "size": 463742
+  },
+  {
+    "file": "art/characters-hassan/temperance.jpg",
+    "title": "Temperance",
+    "scrivener_path": "Characters/Hassan - Kali Yuga/Anais/Temperance",
+    "category": "characters-hassan",
+    "uuid": "7F28DB48-9761-4E17-BA5C-5C0AAA44253F",
+    "ext": ".jpg",
+    "size": 670502
+  },
+  {
+    "file": "art/characters-hassan/gandhara_buddha.jpeg",
+    "title": "Gandhara_Buddha",
+    "scrivener_path": "Characters/Hassan - Kali Yuga/Arahan/Gandhara_Buddha",
+    "category": "characters-hassan",
+    "uuid": "E2920A3F-A680-45A0-B500-30CFE7A0548C",
+    "ext": ".jpeg",
+    "size": 361611,
+    "notes": "a future version hanuman"
+  },
+  {
+    "file": "art/characters-hassan/crystal-bowie-glass-body.png",
+    "title": "Crystal Bowie glass body",
+    "scrivener_path": "Characters/Hassan - Kali Yuga/Dhukka Khan/Crystal Bowie glass body",
+    "category": "characters-hassan",
+    "uuid": "FE40C09E-4010-4E30-80B5-BC94B49970AA",
+    "ext": ".png",
+    "size": 704603
+  },
+  {
+    "file": "art/characters-hassan/george-soros.webp",
+    "title": "George Soros",
+    "scrivener_path": "Characters/Hassan - Kali Yuga/Dhukka Khan/George Soros",
+    "category": "characters-hassan",
+    "uuid": "5FB637FC-35D6-46F0-8376-1F990B5D766D",
+    "ext": ".webp",
+    "size": 60608
+  },
+  {
+    "file": "art/characters-hassan/king-bradley-as-haz-king.webp",
+    "title": "King Bradley as Haz King",
+    "scrivener_path": "Characters/Hassan - Kali Yuga/Dhukka Khan/King Bradley as Haz King",
+    "category": "characters-hassan",
+    "uuid": "F438006B-808F-420F-94E8-E4D29A865B0B",
+    "ext": ".webp",
+    "size": 162400
+  },
+  {
+    "file": "art/characters-hassan/bruce-lee.jpg",
+    "title": "Bruce Lee",
+    "scrivener_path": "Characters/Hassan - Kali Yuga/Hyfe/Bruce Lee",
+    "category": "characters-hassan",
+    "uuid": "68DE2F92-7BC6-4CBC-99AD-88AFB84BBBDC",
+    "ext": ".jpg",
+    "size": 57047
+  },
+  {
+    "file": "art/characters-hassan/calm-intense-bruce.jpeg",
+    "title": "Calm, intense Bruce",
+    "scrivener_path": "Characters/Hassan - Kali Yuga/Hyfe/Calm, intense Bruce",
+    "category": "characters-hassan",
+    "uuid": "D3F49DE6-9BF6-44B4-B9E9-3381A6C7FCFB",
+    "ext": ".jpeg",
+    "size": 24302
+  },
+  {
+    "file": "art/characters-hassan/ling-prince-of-xing.webp",
+    "title": "Ling, Prince of Xing",
+    "scrivener_path": "Characters/Hassan - Kali Yuga/Hyfe/Ling, Prince of Xing",
+    "category": "characters-hassan",
+    "uuid": "CCB8A556-B073-4CED-90DD-9BC88466F668",
+    "ext": ".webp",
+    "size": 116912,
+    "notes": "Uses a Dao\n\nDao also is \u201cWay\u201d\n\nNever abandons his people"
+  },
+  {
+    "file": "art/characters-hassan/top-white-hair.jpg",
+    "title": "T.O.P. white hair",
+    "scrivener_path": "Characters/Hassan - Kali Yuga/Hyfe/T.O.P. white hair",
+    "category": "characters-hassan",
+    "uuid": "9E1383CF-C2E0-4438-811F-DEAB4F730FF9",
+    "ext": ".jpg",
+    "size": 49298
+  },
+  {
+    "file": "art/characters-hassan/astral_bike_rw3.gif",
+    "title": "astral_bike_rw3",
+    "scrivener_path": "Characters/Hassan - Kali Yuga/Hyfe/astral_bike_rw3",
+    "category": "characters-hassan",
+    "uuid": "81BA2C5F-5BFD-44DF-B4EC-67B79D8437AC",
+    "ext": ".gif",
+    "size": 41452
+  },
+  {
+    "file": "art/characters-hassan/faramir_last_ride.jpg",
+    "title": "faramir_last_ride",
+    "scrivener_path": "Characters/Hassan - Kali Yuga/Hyfe/faramir_last_ride",
+    "category": "characters-hassan",
+    "uuid": "808F99EC-2EBB-454E-9A32-A3057915CAD3",
+    "ext": ".jpg",
+    "size": 77310
+  },
+  {
+    "file": "art/characters-hassan/mad-max-in-front-of-car.png",
+    "title": "mad max in front of car",
+    "scrivener_path": "Characters/Hassan - Kali Yuga/Hyfe/mad max in front of car",
+    "category": "characters-hassan",
+    "uuid": "212CB8C8-0765-49D9-B7E9-DD2C51A90A1C",
+    "ext": ".png",
+    "size": 3807393
+  },
+  {
+    "file": "art/characters-hassan/shen.jpg",
+    "title": "shen",
+    "scrivener_path": "Characters/Hassan - Kali Yuga/Hyfe/shen",
+    "category": "characters-hassan",
+    "uuid": "43E599BF-7D33-470E-9845-864F741D26EF",
+    "ext": ".jpg",
+    "size": 217682
+  },
+  {
+    "file": "art/characters-hassan/heavenly-blade---nariko.jpg",
+    "title": "Heavenly Blade - Nariko",
+    "scrivener_path": "Characters/Hassan - Kali Yuga/Nala/Heavenly Blade - Nariko",
+    "category": "characters-hassan",
+    "uuid": "7DFD05DE-9458-41A5-A86F-4AED584B0EB6",
+    "ext": ".jpg",
+    "size": 129659,
+    "notes": "Narioko = means, gentle child; Thunder"
+  },
+  {
+    "file": "art/characters-hassan/the-blue-spirit.jpg",
+    "title": "the blue spirit",
+    "scrivener_path": "Characters/Hassan - Kali Yuga/Nala/the blue spirit",
+    "category": "characters-hassan",
+    "uuid": "18C8CC0C-6822-428A-A94D-66165FE90871",
+    "ext": ".jpg",
+    "size": 106479
+  },
+  {
+    "file": "art/characters-hassan/moon-empress.png",
+    "title": "Moon Empress",
+    "scrivener_path": "Characters/Hassan - Kali Yuga/Sephine/Moon Empress",
+    "category": "characters-hassan",
+    "uuid": "411A3970-3267-4104-BB9E-40EF4461A8DB",
+    "ext": ".png",
+    "size": 938744
+  },
+  {
+    "file": "art/characters-hassan/eve.png",
+    "title": "eve",
+    "scrivener_path": "Characters/Hassan - Kali Yuga/Sephine/eve",
+    "category": "characters-hassan",
+    "uuid": "C2F2F15F-C05D-4046-9029-B6D6A93F787B",
+    "ext": ".png",
+    "size": 1121624
+  },
+  {
+    "file": "art/cover/cover.png",
+    "title": "Cover",
+    "scrivener_path": "Front Matter/Ebook/Cover",
+    "category": "cover",
+    "uuid": "C88ACCC3-4FDB-4952-80E1-177623CDE141",
+    "ext": ".png",
+    "size": 114420
+  },
+  {
+    "file": "art/places/last-vegas-surface.jpg",
+    "title": "Last Vegas surface",
+    "scrivener_path": "Places/Earth - 2069/Las Vegas Mega Resort/Last Vegas surface",
+    "category": "places",
+    "uuid": "908F5CC4-EB24-4D6B-8DBF-23004204CF67",
+    "ext": ".jpg",
+    "size": 359531
+  },
+  {
+    "file": "art/places/topography-of-vegas-city.png",
+    "title": "Topography of Vegas City",
+    "scrivener_path": "Places/Earth - 2069/Las Vegas Mega Resort/Topography of Vegas City",
+    "category": "places",
+    "uuid": "20C4B750-5E13-4486-B2D9-4B50AFF6C79B",
+    "ext": ".png",
+    "size": 3974580
+  },
+  {
+    "file": "art/places/vegas-metro-area-map.png",
+    "title": "Vegas Metro Area Map",
+    "scrivener_path": "Places/Earth - 2069/Las Vegas Mega Resort/Vegas Metro Area Map",
+    "category": "places",
+    "uuid": "F5639A97-C577-4E69-A982-6E8FA02D1B90",
+    "ext": ".png",
+    "size": 543406
+  },
+  {
+    "file": "art/places/dive-bar.jpeg",
+    "title": "Dive bar",
+    "scrivener_path": "Places/Earth - 2069/Oikoumene - The City/Dive bar",
+    "category": "places",
+    "uuid": "838E53C4-EE9C-4698-9766-1A1D462CAA88",
+    "ext": ".jpeg",
+    "size": 375335
+  },
+  {
+    "file": "art/places/elvira.jpeg",
+    "title": "Elvira",
+    "scrivener_path": "Places/Earth - 2069/Oikoumene - The City/Elvira",
+    "category": "places",
+    "uuid": "0FCCEAB2-2A08-4293-B861-E4C620B26CB5",
+    "ext": ".jpeg",
+    "size": 212336
+  },
+  {
+    "file": "art/places/elvira-smoking.webp",
+    "title": "Elvira smoking",
+    "scrivener_path": "Places/Earth - 2069/Oikoumene - The City/Elvira smoking",
+    "category": "places",
+    "uuid": "02611A29-1366-41D3-9B48-69ABD4713D63",
+    "ext": ".webp",
+    "size": 345238
+  },
+  {
+    "file": "art/places/guo-pei-auntie.webp",
+    "title": "Guo Pei \"Auntie\"",
+    "scrivener_path": "Places/Earth - 2069/Oikoumene - The City/Guo Pei \"Auntie\"",
+    "category": "places",
+    "uuid": "74F554FE-176C-42A9-A1E3-CF8FED115857",
+    "ext": ".webp",
+    "size": 86348
+  },
+  {
+    "file": "art/places/ouikemene-in-morph.jpg",
+    "title": "Ouikemene in morph",
+    "scrivener_path": "Places/Earth - 2069/Oikoumene - The City/Ouikemene in morph",
+    "category": "places",
+    "uuid": "1475DBE7-410F-4C34-86B9-5DFA7C976F48",
+    "ext": ".jpg",
+    "size": 245430
+  },
+  {
+    "file": "art/places/pace-smoking.webp",
+    "title": "Pace smoking",
+    "scrivener_path": "Places/Earth - 2069/Oikoumene - The City/Pace smoking",
+    "category": "places",
+    "uuid": "EBFE1295-189B-442E-92EB-B76F1A1473B5",
+    "ext": ".webp",
+    "size": 34808
+  },
+  {
+    "file": "art/places/wealth---sea-port-and-honey.jpeg",
+    "title": "Wealth - sea port and honey",
+    "scrivener_path": "Places/Earth - 2069/Oikoumene - The City/Wealth - sea port and honey",
+    "category": "places",
+    "uuid": "43C0160D-EA6D-4A2F-959A-CCF8D815F7EC",
+    "ext": ".jpeg",
+    "size": 390522
+  },
+  {
+    "file": "art/places/wealth---space-port.jpeg",
+    "title": "Wealth - space port",
+    "scrivener_path": "Places/Earth - 2069/Oikoumene - The City/Wealth - space port",
+    "category": "places",
+    "uuid": "03C51DCF-481C-47FA-BC29-A5B75E32536F",
+    "ext": ".jpeg",
+    "size": 1050125
+  },
+  {
+    "file": "art/places/wealth---the-atlier.jpeg",
+    "title": "Wealth - the atlier",
+    "scrivener_path": "Places/Earth - 2069/Oikoumene - The City/Wealth - the atlier",
+    "category": "places",
+    "uuid": "F99CCB3B-C635-4F30-A411-187AF2A36775",
+    "ext": ".jpeg",
+    "size": 347898
+  },
+  {
+    "file": "art/places/wealth---the-bandshell-and-table.jpeg",
+    "title": "Wealth - the bandshell and table",
+    "scrivener_path": "Places/Earth - 2069/Oikoumene - The City/Wealth - the bandshell and table",
+    "category": "places",
+    "uuid": "52CD58B6-CA0C-493B-ADE4-3EBEAC6089A6",
+    "ext": ".jpeg",
+    "size": 399951
+  },
+  {
+    "file": "art/places/guopei.jpg",
+    "title": "guopei",
+    "scrivener_path": "Places/Earth - 2069/Oikoumene - The City/guopei",
+    "category": "places",
+    "uuid": "DC60736B-8277-472F-A12F-ACB35C502866",
+    "ext": ".jpg",
+    "size": 89843
+  },
+  {
+    "file": "art/references/fury-of-language.png",
+    "title": "Fury of language",
+    "scrivener_path": "Research/Feeling stuck?/Fury of language",
+    "category": "references",
+    "uuid": "922AB7AC-0A59-4058-965D-E3D68DDE693E",
+    "ext": ".png",
+    "size": 6221988,
+    "notes": "Werner Herzog will read poetry from antiquity to be entranced in the best language"
+  },
+  {
+    "file": "art/references/neals-challenge-1.png",
+    "title": "neal's challenge 1",
+    "scrivener_path": "Research/Neal Stephenson's Challenge/neal's challenge 1",
+    "category": "references",
+    "uuid": "3BD8E190-EF13-4583-9922-EB37B7C25FF8",
+    "ext": ".png",
+    "size": 7263517
+  },
+  {
+    "file": "art/references/neals-challenge-2.png",
+    "title": "neal's challenge 2",
+    "scrivener_path": "Research/Neal Stephenson's Challenge/neal's challenge 2",
+    "category": "references",
+    "uuid": "6EB85AC0-413A-40B7-B697-9481349409D9",
+    "ext": ".png",
+    "size": 7214044
+  },
+  {
+    "file": "art/references/neals-challenge-3.png",
+    "title": "neal's challenge 3",
+    "scrivener_path": "Research/Neal Stephenson's Challenge/neal's challenge 3",
+    "category": "references",
+    "uuid": "BCA7A475-75CD-426F-A6AC-C4FC2BA2556B",
+    "ext": ".png",
+    "size": 6893758
+  },
+  {
+    "file": "art/references/blue-speed-hoverbike.webp",
+    "title": "Blue speed hoverbike",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Blue speed hoverbike",
+    "category": "references",
+    "uuid": "38FFF71A-B0F3-4126-AC49-F8DE98BBACE5",
+    "ext": ".webp",
+    "size": 89262
+  },
+  {
+    "file": "art/references/bruces-apartment.jpeg",
+    "title": "Bruce's apartment",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Bruce's apartment",
+    "category": "references",
+    "uuid": "14EC2FBE-25AE-4993-B365-CA49333734FE",
+    "ext": ".jpeg",
+    "size": 375335
+  },
+  {
+    "file": "art/references/buddha-awaking-under-the-tree.png",
+    "title": "Buddha awaking under the tree",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Buddha awaking under the tree",
+    "category": "references",
+    "uuid": "BF9CD7F9-B25B-4B5B-A401-4582888106BE",
+    "ext": ".png",
+    "size": 3709354
+  },
+  {
+    "file": "art/references/chinese-streamer-in-front-of-a-mawn-of-phones.png",
+    "title": "Chinese streamer in front of a mawn of phones",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Chinese streamer in front of a mawn of phones",
+    "category": "references",
+    "uuid": "585AD09E-C183-461F-AE2B-60091290364D",
+    "ext": ".png",
+    "size": 856056
+  },
+  {
+    "file": "art/references/dayan-qigong-master-via-rebeccas-lineage.png",
+    "title": "DaYan QiGong Master; Via Rebecca's lineage",
+    "scrivener_path": "Research/image references / aesthetics / scenes/DaYan QiGong Master; Via Rebecca's lineage",
+    "category": "references",
+    "uuid": "96AD89A4-22B5-488D-B6A5-491166323F13",
+    "ext": ".png",
+    "size": 1524121
+  },
+  {
+    "file": "art/references/david.webp",
+    "title": "David",
+    "scrivener_path": "Research/image references / aesthetics / scenes/David",
+    "category": "references",
+    "uuid": "C90468AA-3878-4A9B-84B3-68D9A26D4A83",
+    "ext": ".webp",
+    "size": 671380
+  },
+  {
+    "file": "art/references/death-gate.jpeg",
+    "title": "Death Gate",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Death Gate",
+    "category": "references",
+    "uuid": "54CE270F-FCD3-49EA-AF4F-4F9302A9AB2F",
+    "ext": ".jpeg",
+    "size": 295224
+  },
+  {
+    "file": "art/references/dune.jpg",
+    "title": "Dune",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Dune",
+    "category": "references",
+    "uuid": "DE016B9E-3F1A-4468-BEB9-8AFBD64B1CB3",
+    "ext": ".jpg",
+    "size": 112777
+  },
+  {
+    "file": "art/references/father-i-fear.png",
+    "title": "Father, I fear",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Father, I fear",
+    "category": "references",
+    "uuid": "0CC8A7E1-1713-45AC-8C72-8036613C1EB0",
+    "ext": ".png",
+    "size": 1941877
+  },
+  {
+    "file": "art/references/guo-pei-auntie-1.webp",
+    "title": "Guo Pei \"Auntie\"",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Guo Pei \"Auntie\"",
+    "category": "references",
+    "uuid": "34659026-5BF2-4F77-809C-1025013CAF87",
+    "ext": ".webp",
+    "size": 86348
+  },
+  {
+    "file": "art/references/jannik-sinner-roland-garos-2025.webp",
+    "title": "Jannik Sinner Roland Garos 2025",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Jannik Sinner Roland Garos 2025",
+    "category": "references",
+    "uuid": "DF96FA3B-46DB-4EB6-B111-0D6094755A9B",
+    "ext": ".webp",
+    "size": 128058
+  },
+  {
+    "file": "art/references/kaneda-bike.webp",
+    "title": "Kaneda bike",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Kaneda bike",
+    "category": "references",
+    "uuid": "025FEDCC-AECC-4D6D-BFAC-3010849EA84C",
+    "ext": ".webp",
+    "size": 52134
+  },
+  {
+    "file": "art/references/large-scale-structure.jpg",
+    "title": "Large scale structure",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Large scale structure",
+    "category": "references",
+    "uuid": "4BDFD47C-90D8-4B50-B990-BB24C363974E",
+    "ext": ".jpg",
+    "size": 3019850
+  },
+  {
+    "file": "art/references/logan-roy-nolen-dawn.jpg",
+    "title": "Logan Roy / Nolen Dawn",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Logan Roy / Nolen Dawn",
+    "category": "references",
+    "uuid": "ACDB7855-7C98-4EA3-BAE8-7756C7B36179",
+    "ext": ".jpg",
+    "size": 643943,
+    "notes": "inspiration for Nolen Dawn"
+  },
+  {
+    "file": "art/references/marcos-apartment.jpeg",
+    "title": "Marco's apartment",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Marco's apartment",
+    "category": "references",
+    "uuid": "9E497364-E066-46E9-BF73-50B50B46D585",
+    "ext": ".jpeg",
+    "size": 399951
+  },
+  {
+    "file": "art/references/marcos-obsession-with-rodin.jpeg",
+    "title": "Marco's obsession with Rodin",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Marco's obsession with Rodin",
+    "category": "references",
+    "uuid": "D4569542-DE25-4435-96EA-B17801CCCEE2",
+    "ext": ".jpeg",
+    "size": 347898
+  },
+  {
+    "file": "art/references/neos-awakening.png",
+    "title": "Neo's awakening",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Neo's awakening",
+    "category": "references",
+    "uuid": "69186762-C0FF-477F-95EA-166E94595F5B",
+    "ext": ".png",
+    "size": 2680546,
+    "notes": "\u201cWhere we go from that's a choice I leave to you\u201d"
+  },
+  {
+    "file": "art/references/nole-dawns-shipyard.jpeg",
+    "title": "Nole Dawn's shipyard",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Nole Dawn's shipyard",
+    "category": "references",
+    "uuid": "A482CEDD-E8C7-4FAF-B30C-99CFEBF22CE9",
+    "ext": ".jpeg",
+    "size": 1050125
+  },
+  {
+    "file": "art/references/nole-dawns-yatch.jpeg",
+    "title": "Nole Dawn's yatch",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Nole Dawn's yatch",
+    "category": "references",
+    "uuid": "D0B690F4-A380-45F8-B11D-DF804CD17E4B",
+    "ext": ".jpeg",
+    "size": 390522
+  },
+  {
+    "file": "art/references/palace-of-fine-arts-the-world.jpeg",
+    "title": "Palace of Fine Arts \"The World\"",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Palace of Fine Arts \"The World\"",
+    "category": "references",
+    "uuid": "A024CDFC-D7C1-4EC4-B637-A0043141347E",
+    "ext": ".jpeg",
+    "size": 77530
+  },
+  {
+    "file": "art/references/palace-of-fine-arts-war.jpeg",
+    "title": "Palace of Fine Arts \"War\"",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Palace of Fine Arts \"War\"",
+    "category": "references",
+    "uuid": "65AD459E-43DA-4955-A396-8CC9B82D3D3F",
+    "ext": ".jpeg",
+    "size": 97842
+  },
+  {
+    "file": "art/references/palace-of-fine-arts-dome.jpeg",
+    "title": "Palace of Fine Arts dome",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Palace of Fine Arts dome",
+    "category": "references",
+    "uuid": "6B5B948F-9179-4EE7-81C4-5E20C967A5FD",
+    "ext": ".jpeg",
+    "size": 45294
+  },
+  {
+    "file": "art/references/palace-of-fine-arts-landscape.jpeg",
+    "title": "Palace of Fine Arts landscape",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Palace of Fine Arts landscape",
+    "category": "references",
+    "uuid": "5A5AE615-DB52-4163-83E6-B54E71E65D3F",
+    "ext": ".jpeg",
+    "size": 47872
+  },
+  {
+    "file": "art/references/poem---buddhas-first-words.png",
+    "title": "Poem - Buddha's first words",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Poem - Buddha's first words",
+    "category": "references",
+    "uuid": "82001A92-4150-4027-A550-5A94F46C074C",
+    "ext": ".png",
+    "size": 400547
+  },
+  {
+    "file": "art/references/rodin-gates-of-hell.png",
+    "title": "Rodin Gates of Hell",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Rodin Gates of Hell",
+    "category": "references",
+    "uuid": "F94BFFED-7AC0-43C9-BD9E-6AC070259EA9",
+    "ext": ".png",
+    "size": 2217196
+  },
+  {
+    "file": "art/references/roger-federer.jpg",
+    "title": "Roger Federer",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Roger Federer",
+    "category": "references",
+    "uuid": "6E61F626-C704-4D51-9E5A-F1E369A15E4E",
+    "ext": ".jpg",
+    "size": 80906
+  },
+  {
+    "file": "art/references/sakura-and-moss-pink.jpg",
+    "title": "Sakura and moss pink",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Sakura and moss pink",
+    "category": "references",
+    "uuid": "D72DC9B9-B806-43F0-9B5E-4DD6B650FC78",
+    "ext": ".jpg",
+    "size": 216728
+  },
+  {
+    "file": "art/references/saturn-devours-son.jpg",
+    "title": "Saturn devours son",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Saturn devours son",
+    "category": "references",
+    "uuid": "E61855AB-CCC8-44B9-8E2D-AD7666741D91",
+    "ext": ".jpg",
+    "size": 7916426
+  },
+  {
+    "file": "art/references/screenshot-2025-04-08-at-10540-pm.png",
+    "title": "Screenshot 2025-04-08 at 1.05.40\u202fPM",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Screenshot 2025-04-08 at 1.05.40\u202fPM",
+    "category": "references",
+    "uuid": "CC39F2DC-37E2-4BD1-8A70-49A95EA3129F",
+    "ext": ".png",
+    "size": 4200386
+  },
+  {
+    "file": "art/references/screenshot-2025-04-18-at-72044-pm.png",
+    "title": "Screenshot 2025-04-18 at 7.20.44\u202fPM",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Screenshot 2025-04-18 at 7.20.44\u202fPM",
+    "category": "references",
+    "uuid": "E64191B6-18B4-41F8-B4CD-DC7D7E8907DB",
+    "ext": ".png",
+    "size": 127125
+  },
+  {
+    "file": "art/references/screenshot-2025-07-30-at-22550-pm.png",
+    "title": "Screenshot 2025-07-30 at 2.25.50\u202fPM",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Screenshot 2025-07-30 at 2.25.50\u202fPM",
+    "category": "references",
+    "uuid": "69FC8608-087C-47AF-B6E5-5264916262A3",
+    "ext": ".png",
+    "size": 1477240
+  },
+  {
+    "file": "art/references/screenshot-2025-08-02-at-100907-am.png",
+    "title": "Screenshot 2025-08-02 at 10.09.07\u202fAM",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Screenshot 2025-08-02 at 10.09.07\u202fAM",
+    "category": "references",
+    "uuid": "1CEE5DC4-B14F-4EA8-BAD9-B52FD9AA0402",
+    "ext": ".png",
+    "size": 1387779
+  },
+  {
+    "file": "art/references/screenshot-2025-08-04-at-110118-am.png",
+    "title": "Screenshot 2025-08-04 at 11.01.18\u202fAM",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Screenshot 2025-08-04 at 11.01.18\u202fAM",
+    "category": "references",
+    "uuid": "8C8DF04C-C69D-45D1-8BE4-0BA453CAFCB0",
+    "ext": ".png",
+    "size": 1651552
+  },
+  {
+    "file": "art/references/screenshot-2025-08-06-at-21228-pm.png",
+    "title": "Screenshot 2025-08-06 at 2.12.28\u202fPM",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Screenshot 2025-08-06 at 2.12.28\u202fPM",
+    "category": "references",
+    "uuid": "59E54970-7ACD-42F8-A485-D8263FC2565C",
+    "ext": ".png",
+    "size": 1395063
+  },
+  {
+    "file": "art/references/screenshot-2025-08-06-at-21246-pm.png",
+    "title": "Screenshot 2025-08-06 at 2.12.46\u202fPM",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Screenshot 2025-08-06 at 2.12.46\u202fPM",
+    "category": "references",
+    "uuid": "E6D109A2-7288-49DF-B2B7-EF849247A1EE",
+    "ext": ".png",
+    "size": 2894654
+  },
+  {
+    "file": "art/references/screenshot-2025-08-06-at-21253-pm.png",
+    "title": "Screenshot 2025-08-06 at 2.12.53\u202fPM",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Screenshot 2025-08-06 at 2.12.53\u202fPM",
+    "category": "references",
+    "uuid": "2E11EC6D-4DF3-47F4-82ED-76A7731BF6A8",
+    "ext": ".png",
+    "size": 4154358
+  },
+  {
+    "file": "art/references/screenshot-2025-08-06-at-21426-pm.png",
+    "title": "Screenshot 2025-08-06 at 2.14.26\u202fPM",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Screenshot 2025-08-06 at 2.14.26\u202fPM",
+    "category": "references",
+    "uuid": "5F609602-C777-4CF7-884A-C7E4EFDE673A",
+    "ext": ".png",
+    "size": 4842772
+  },
+  {
+    "file": "art/references/screenshot-2025-08-06-at-21433-pm.png",
+    "title": "Screenshot 2025-08-06 at 2.14.33\u202fPM",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Screenshot 2025-08-06 at 2.14.33\u202fPM",
+    "category": "references",
+    "uuid": "F651AF5D-D6A3-490D-BDE3-D0D4B0C0F007",
+    "ext": ".png",
+    "size": 4036290
+  },
+  {
+    "file": "art/references/screenshot-2025-10-16-at-94933-am.png",
+    "title": "Screenshot 2025-10-16 at 9.49.33\u202fAM",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Screenshot 2025-10-16 at 9.49.33\u202fAM",
+    "category": "references",
+    "uuid": "86E21590-632A-4F16-9C27-B378C22EA477",
+    "ext": ".png",
+    "size": 3669565
+  },
+  {
+    "file": "art/references/shu-qi-blocking-assassin-1.png",
+    "title": "Shu Qi blocking assassin",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Shu Qi blocking assassin",
+    "category": "references",
+    "uuid": "CB4D8848-12A8-4F59-AECD-378773EA5CCF",
+    "ext": ".png",
+    "size": 6768270,
+    "notes": "Anais."
+  },
+  {
+    "file": "art/references/teddy-riner.jpeg",
+    "title": "Teddy Riner",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Teddy Riner",
+    "category": "references",
+    "uuid": "B859D179-C4D2-49C7-9713-5B1525DCABCC",
+    "ext": ".jpeg",
+    "size": 30122
+  },
+  {
+    "file": "art/references/the-russian-brides-attire.jpg",
+    "title": "The Russian Bride's Attire",
+    "scrivener_path": "Research/image references / aesthetics / scenes/The Russian Bride's Attire",
+    "category": "references",
+    "uuid": "28CBCBF3-47F4-42FD-A435-DBAE9139B164",
+    "ext": ".jpg",
+    "size": 191177
+  },
+  {
+    "file": "art/references/the-tower-tarot.jpg",
+    "title": "The Tower tarot",
+    "scrivener_path": "Research/image references / aesthetics / scenes/The Tower tarot",
+    "category": "references",
+    "uuid": "0AE414F1-A8DA-4E76-8C77-36B511F00BFE",
+    "ext": ".jpg",
+    "size": 474132
+  },
+  {
+    "file": "art/references/the-island-hoverbike.jpg",
+    "title": "The island hoverbike",
+    "scrivener_path": "Research/image references / aesthetics / scenes/The island hoverbike",
+    "category": "references",
+    "uuid": "11EA94F6-46AA-4C91-944E-B291C9D89041",
+    "ext": ".jpg",
+    "size": 17426
+  },
+  {
+    "file": "art/references/types-of-dao.png",
+    "title": "Types of Dao",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Types of Dao",
+    "category": "references",
+    "uuid": "0CB91691-FA30-42CD-B8FB-B20E2AD3362C",
+    "ext": ".png",
+    "size": 1868297
+  },
+  {
+    "file": "art/references/wehe-khorazin.png",
+    "title": "Wehe Khorazin",
+    "scrivener_path": "Research/image references / aesthetics / scenes/Wehe Khorazin",
+    "category": "references",
+    "uuid": "7B3D0076-15FA-4E50-B288-C9719F3B57DC",
+    "ext": ".png",
+    "size": 2883784,
+    "notes": "\u201cWhat are you doing?\u201d\n\u201cI\u2019m going to drag a bomb into hell.\u201d\n\u201cThen what?\u201d\n\u201cThen blow it up.\u201d"
+  },
+  {
+    "file": "art/references/blonde-prototype-with-sunglasses.png",
+    "title": "blonde prototype with sunglasses",
+    "scrivener_path": "Research/image references / aesthetics / scenes/blonde prototype with sunglasses",
+    "category": "references",
+    "uuid": "C9117948-5119-4B22-BE6A-FEF6FA2A5C1C",
+    "ext": ".png",
+    "size": 2155798
+  },
+  {
+    "file": "art/references/mad-max-in-front-of-car-1.png",
+    "title": "mad max in front of car",
+    "scrivener_path": "Research/image references / aesthetics / scenes/mad max in front of car",
+    "category": "references",
+    "uuid": "6918601A-0729-495B-9353-84A04ADAC275",
+    "ext": ".png",
+    "size": 3807393
+  },
+  {
+    "file": "art/references/painted-dune.png",
+    "title": "painted dune",
+    "scrivener_path": "Research/image references / aesthetics / scenes/painted dune",
+    "category": "references",
+    "uuid": "DB6967D5-F64D-42C3-B592-86FDDB16DD64",
+    "ext": ".png",
+    "size": 1984753
+  },
+  {
+    "file": "art/references/palace-of-fine-arts-journey.jpeg",
+    "title": "palace of Fine Arts \"Journey\"",
+    "scrivener_path": "Research/image references / aesthetics / scenes/palace of Fine Arts \"Journey\"",
+    "category": "references",
+    "uuid": "038CEE19-F35B-4B47-B173-31844BC8BC56",
+    "ext": ".jpeg",
+    "size": 96966
+  },
+  {
+    "file": "art/references/palm-with-key-tattoo.png",
+    "title": "palm with key tattoo",
+    "scrivener_path": "Research/image references / aesthetics / scenes/palm with key tattoo",
+    "category": "references",
+    "uuid": "2CD807FC-A7FF-4359-8229-F4A69DE156E0",
+    "ext": ".png",
+    "size": 127041
+  },
+  {
+    "file": "art/references/super-continent.png",
+    "title": "super continent",
+    "scrivener_path": "Research/image references / aesthetics / scenes/super continent",
+    "category": "references",
+    "uuid": "C81C3F71-86D4-4345-8083-722DD19E288B",
+    "ext": ".png",
+    "size": 3093545
+  }
+]

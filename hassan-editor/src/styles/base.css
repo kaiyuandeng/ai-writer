@@ -1,0 +1,74 @@
+/* Hassan Editor — Tufte Minimal + Cabal Palette */
+
+:root {
+  /* Cabal palette — 5 colors, used only where they encode meaning */
+  --cabal-purple:  #895cdb;
+  --cabal-sage:    #bad39d;
+  --cabal-blue:    #2f9bfa;
+  --cabal-deep:    #181cf5;
+  --cabal-orange:  #dc6a21;
+
+  /* Surfaces — near-black, no decoration */
+  --bg:           #0c0c0c;
+  --bg-sidebar:   #0c0c0c;
+
+  /* Text — two weights only */
+  --text:         #d4d0c8;
+  --text-muted:   #5a5750;
+
+  /* Story arc palette (non-gold). Gold is reserved for provenance = GOLD. */
+  --story-arc-a:  var(--cabal-purple);   /* Hassan */
+  --story-arc-b:  var(--cabal-blue);     /* Enigram */
+  --story-arc-c:  var(--cabal-deep);     /* Earth */
+
+  /* Back-compat aliases while UI migrates */
+  --timeline-a:   var(--story-arc-a);
+  --timeline-b:   var(--story-arc-b);
+  --timeline-c:   var(--story-arc-c);
+
+  /* Typography */
+  --font-prose:   'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
+  --font-ui:      -apple-system, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+  --font-mono:    'SF Mono', 'Fira Code', 'Consolas', monospace;
+
+  --prose-size:   17px;
+  --prose-height: 1.9;
+  --prose-width:  38em;
+
+  /* Layout */
+  --sidebar-width: 240px;
+  --statusbar-height: 24px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Invisible scrollbars — appear only on scroll */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  border-radius: 2px;
+}
+
+::selection {
+  background: rgba(137, 92, 219, 0.2);
+}

@@ -1,0 +1,105 @@
+/* Hassan Editor — Sidebar / Binder — Tufte minimal */
+
+.sidebar {
+  width: var(--sidebar-width);
+  height: calc(100vh - var(--statusbar-height));
+  background: var(--bg-sidebar);
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.sidebar-header {
+  padding: 20px 16px 16px;
+}
+
+.sidebar-title {
+  font-size: 10px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+}
+
+.sidebar-project-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  margin-top: 2px;
+}
+
+.tree {
+  padding: 4px 0;
+}
+
+.tree-node {
+  cursor: pointer;
+}
+
+.tree-node-row {
+  display: flex;
+  align-items: center;
+  padding: 3px 16px;
+  gap: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tree-node-row:hover {
+  color: var(--cabal-purple);
+}
+
+.tree-node-row.active {
+  color: var(--cabal-purple);
+}
+
+.tree-node-row.directory {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.tree-indent {
+  width: 12px;
+  flex-shrink: 0;
+}
+
+.tree-icon {
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 6px;
+}
+
+.tree-icon.folder { color: var(--text-muted); }
+.tree-icon.file-a { color: var(--story-arc-a); }
+.tree-icon.file-b { color: var(--story-arc-b); }
+.tree-icon.file-c { color: var(--story-arc-c); }
+.tree-icon.file-default { color: var(--text-muted); }
+
+.tree-label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+}
+
+.tree-wordcount {
+  font-size: 9px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  flex-shrink: 0;
+}
+
+.tree-children {
+  overflow: hidden;
+}
+
+.tree-children.collapsed {
+  display: none;
+}

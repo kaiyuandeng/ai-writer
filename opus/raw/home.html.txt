@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>What is the Ainos Enigram?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wrapper {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .title {
+      font-size: 2.4rem; /* medium-large */
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      font-style: italic;
+      opacity: 0.75;
+      margin-bottom: 3rem;
+    }
+
+    .timer {
+      font-size: 2rem;
+      letter-spacing: 0.12em;
+    }
+
+    .label {
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 600px) {
+      .title {
+        font-size: 1.8rem;
+      }
+      .timer {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="title">What is the Ainos Enigram?</div>
+    <div class="subtitle">The clock is already running.</div>
+
+    <div id="countdown" class="timer">Loading...</div>
+  </div>
+
+  <script>
+    // Are you ready to win? 31:19. Hit the button and you win.
+    const targetDate = new Date("November 7, 2028 09:31:19”);
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      const el = document.getElementById("countdown");
+
+      if (diff <= 0) {
+        el.textContent = "0D : 00H : 00M : 00S";
+        document.querySelector(".subtitle").textContent =
+          "The Enigram has entered the field.";
+        clearInterval(timer);
+        return;
+      }
+
+      const totalSeconds = Math.floor(diff / 1000);
+
+      const days = Math.floor(totalSeconds / (60 * 60 * 24));
+      const hours = Math.floor((totalSeconds % (60 * 60 * 24)) / (60 * 60));
+      const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
+      const seconds = totalSeconds % 60;
+
+      // Pad hours/minutes/seconds
+      const pad = (n) => String(n).padStart(2, "0");
+
+      el.textContent = `${days}D : ${pad(hours)}H : ${pad(
+        minutes
+      )}M : ${pad(seconds)}S`;
+    }
+
+    // Initial call + tick every second
+    updateCountdown();
+    const timer = setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>

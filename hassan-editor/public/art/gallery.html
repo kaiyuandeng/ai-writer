@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hassan — Inspiration Gallery</title>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #141414;
+    --border: #222;
+    --text: #ccc;
+    --text-dim: #666;
+    --gold: #c8a84e;
+    --red: #b33;
+    --blue: #4a7a9b;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Georgia', serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+  header {
+    padding: 2rem 2rem 1rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  h1 {
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .stats {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+  }
+  .filters {
+    display: flex;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--border);
+  }
+  .filter-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    padding: 0.35rem 0.8rem;
+    font-size: 0.75rem;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+  }
+  .filter-btn:hover { border-color: var(--gold); color: var(--text); }
+  .filter-btn.active { border-color: var(--gold); color: var(--gold); background: #1a1508; }
+  .search {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.35rem 0.8rem;
+    font-size: 0.75rem;
+    font-family: inherit;
+    width: 200px;
+  }
+  .search:focus { outline: none; border-color: var(--gold); }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2px;
+    padding: 2px;
+  }
+  .card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    aspect-ratio: 1;
+    background: var(--surface);
+  }
+  .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+    display: block;
+  }
+  .card:hover img { transform: scale(1.05); }
+  .card .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.85));
+    padding: 2rem 0.75rem 0.75rem;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .card:hover .overlay { opacity: 1; }
+  .card .overlay .title {
+    font-size: 0.8rem;
+    color: #fff;
+    margin-bottom: 0.25rem;
+  }
+  .card .overlay .path {
+    font-size: 0.65rem;
+    color: var(--gold);
+  }
+  .card .overlay .cat {
+    font-size: 0.6rem;
+    color: var(--text-dim);
+    margin-top: 0.2rem;
+  }
+
+  /* Lightbox */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+  }
+  .lightbox.active { display: flex; }
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 75vh;
+    object-fit: contain;
+  }
+  .lightbox .info {
+    margin-top: 1.5rem;
+    text-align: center;
+    max-width: 600px;
+  }
+  .lightbox .info h2 {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+  .lightbox .info .scriv-path {
+    font-size: 0.8rem;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+  .lightbox .info .entities {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+  }
+  .lightbox .info .entities a {
+    color: var(--blue);
+    text-decoration: none;
+  }
+  .lightbox .info .entities a:hover { text-decoration: underline; }
+  .lightbox .info .notes {
+    font-size: 0.8rem;
+    color: var(--text);
+    margin-top: 0.75rem;
+    font-style: italic;
+    line-height: 1.5;
+    max-width: 500px;
+    white-space: pre-line;
+  }
+  .lightbox .info .notes-label {
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.25rem;
+    font-style: normal;
+  }
+  .card .note-badge {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: rgba(200,168,78,0.85);
+    color: #000;
+    font-size: 0.55rem;
+    padding: 0.15rem 0.4rem;
+    font-family: sans-serif;
+    letter-spacing: 0.05em;
+  }
+  .lightbox .close {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    font-size: 1.5rem;
+    color: var(--text-dim);
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+  .lightbox .close:hover { color: #fff; }
+  .lightbox .nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: var(--text-dim);
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 1rem;
+  }
+  .lightbox .nav-btn:hover { color: #fff; }
+  .lightbox .nav-prev { left: 1rem; }
+  .lightbox .nav-next { right: 1rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Hassan — Inspiration Gallery</h1>
+  <span class="stats" id="stats"></span>
+</header>
+
+<div class="filters">
+  <button class="filter-btn active" data-cat="all">All</button>
+  <button class="filter-btn" data-cat="characters-hassan">Hassan Characters</button>
+  <button class="filter-btn" data-cat="characters-earth">Earth Characters</button>
+  <button class="filter-btn" data-cat="places">Places</button>
+  <button class="filter-btn" data-cat="references">References</button>
+  <button class="filter-btn" data-cat="cover">Cover</button>
+  <input type="text" class="search" id="search" placeholder="search titles...">
+</div>
+
+<div class="grid" id="grid"></div>
+
+<div class="lightbox" id="lightbox">
+  <button class="close" id="lb-close">&times;</button>
+  <button class="nav-btn nav-prev" id="lb-prev">&lsaquo;</button>
+  <button class="nav-btn nav-next" id="lb-next">&rsaquo;</button>
+  <img id="lb-img" src="" alt="">
+  <div class="info">
+    <h2 id="lb-title"></h2>
+    <div class="scriv-path" id="lb-path"></div>
+    <div class="entities" id="lb-entities"></div>
+    <div class="notes" id="lb-notes" style="display:none"></div>
+  </div>
+</div>
+
+<script>
+const ENTITY_MAP = {
+  'aharah': { label: 'Aharah', type: 'character' },
+  'ahrah': { label: 'Aharah', type: 'character' },
+  'nariko': { label: 'Aharah (Nariko ref)', type: 'character' },
+  'heavenly': { label: 'Aharah / Nahlah', type: 'character' },
+  'valentine': { label: 'Valentine', type: 'character' },
+  'howl': { label: 'Valentine (Howl ref)', type: 'character' },
+  'neo': { label: 'Valentine (Neo ref)', type: 'character' },
+  'pace': { label: 'Pace', type: 'character' },
+  'brad': { label: 'Pace (F1 ref)', type: 'character' },
+  'trans am': { label: 'Pace / Firebird', type: 'character' },
+  'mad max': { label: 'Pace (Max ref)', type: 'character' },
+  'elvira': { label: 'Elvira / AVA', type: 'character' },
+  'rachel': { label: 'Elvira (Rachel ref)', type: 'character' },
+  'nikita': { label: 'Elvira (Nikita ref)', type: 'character' },
+  'faye': { label: 'Elvira (Faye Wong ref)', type: 'character' },
+  'vera': { label: 'Vera', type: 'character' },
+  'marcos': { label: 'Marcos / V0', type: 'character' },
+  'bruce': { label: 'Bruce', type: 'character' },
+  'haz': { label: 'Haz King', type: 'character' },
+  'bradley': { label: 'Haz King (Bradley ref)', type: 'character' },
+  'nahlah': { label: 'Nahlah', type: 'character' },
+  'nala': { label: 'Nahlah', type: 'character' },
+  'anais': { label: 'Anais', type: 'character' },
+  'eve': { label: 'Anais (Eve ref)', type: 'character' },
+  'anastasia': { label: 'Anais (Anastasia ref)', type: 'character' },
+  'nolen': { label: 'Nolen Dawn', type: 'character' },
+  'nole': { label: 'Nolen Dawn', type: 'character' },
+  'logan': { label: 'Nolen Dawn (Logan Roy ref)', type: 'character' },
+  'dawn': { label: 'Nolen Dawn', type: 'character' },
+  'raven': { label: 'Raven / Paperwing', type: 'character' },
+  'buddha': { label: 'Spiritual reference', type: 'theme' },
+  'gandhara': { label: 'Gandharan sculpture', type: 'setting' },
+  'tarot': { label: 'Tarot system', type: 'theme' },
+  'priestess': { label: 'High Priestess (tarot)', type: 'theme' },
+  'strength': { label: 'Strength (tarot)', type: 'theme' },
+  'fortitude': { label: 'Strength (tarot)', type: 'theme' },
+  'queen': { label: 'Queen of Swords (tarot)', type: 'theme' },
+  'palace': { label: 'Palace of Fine Arts', type: 'setting' },
+  'vegas': { label: 'Las Vegas / Neo SF', type: 'setting' },
+  'desert': { label: 'The Desert', type: 'setting' },
+  'dune': { label: 'Desert / Dune ref', type: 'setting' },
+  'rock': { label: 'Tagata Rock', type: 'setting' },
+  'island': { label: 'The Island', type: 'setting' },
+  'spaceport': { label: 'Spaceport', type: 'setting' },
+  'space': { label: 'Spaceport / Mars', type: 'setting' },
+  'wealth': { label: 'Wealth aesthetic', type: 'setting' },
+  'atelier': { label: 'The Atelier', type: 'setting' },
+  'atlier': { label: 'The Atelier', type: 'setting' },
+  'dive': { label: 'Dive bar', type: 'setting' },
+  'guo pei': { label: 'Costume reference', type: 'theme' },
+  'rodin': { label: 'Bruce / Art obsession', type: 'theme' },
+  'father': { label: 'Prologue — Father, I Fear', type: 'theme' },
+  'mulan': { label: 'Aharah (Mulan ref)', type: 'character' },
+  'azula': { label: 'Aharah (Azula ref)', type: 'character' },
+  'shu qi': { label: 'Aharah (Shu Qi ref)', type: 'character' },
+  'melfina': { label: 'Vera (Melfina ref)', type: 'character' },
+  'bike': { label: 'Hoverbike / Kaneda', type: 'setting' },
+  'kaneda': { label: 'Hoverbike (Akira ref)', type: 'setting' },
+  'deckard': { label: 'Blade Runner ref', type: 'theme' },
+  'soros': { label: 'Haz King (Soros ref)', type: 'character' },
+  'fullmetal': { label: 'FMA reference', type: 'theme' },
+  'ling': { label: 'Ling / Prince of Xing', type: 'character' },
+  'moon': { label: 'Moon Empress', type: 'character' },
+  'faramir': { label: 'Nahlah (Faramir ref)', type: 'character' },
+  'dylan': { label: 'Bob Dylan ref', type: 'theme' },
+  'sinner': { label: 'Athletics / Sinner', type: 'theme' },
+};
+
+function inferEntities(title, path) {
+  const combined = (title + ' ' + path).toLowerCase();
+  const found = new Map();
+  for (const [key, val] of Object.entries(ENTITY_MAP)) {
+    if (combined.includes(key)) {
+      found.set(val.label, val);
+    }
+  }
+  return [...found.values()];
+}
+
+let allItems = [];
+let visibleItems = [];
+let currentLbIndex = -1;
+
+async function init() {
+  const res = await fetch('/art/manifest.json');
+  allItems = await res.json();
+
+  allItems.forEach(item => {
+    item.entities = inferEntities(item.title, item.scrivener_path);
+  });
+
+  document.getElementById('stats').textContent =
+    `${allItems.length} references across ${new Set(allItems.map(i => i.category)).size} categories`;
+
+  render(allItems);
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyFilters();
+    });
+  });
+
+  document.getElementById('search').addEventListener('input', applyFilters);
+  document.getElementById('lb-close').addEventListener('click', closeLightbox);
+  document.getElementById('lb-prev').addEventListener('click', () => navigateLb(-1));
+  document.getElementById('lb-next').addEventListener('click', () => navigateLb(1));
+  document.addEventListener('keydown', (e) => {
+    if (!document.getElementById('lightbox').classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navigateLb(-1);
+    if (e.key === 'ArrowRight') navigateLb(1);
+  });
+}
+
+function applyFilters() {
+  const cat = document.querySelector('.filter-btn.active')?.dataset.cat || 'all';
+  const q = document.getElementById('search').value.toLowerCase();
+  let filtered = allItems;
+  if (cat !== 'all') filtered = filtered.filter(i => i.category === cat);
+  if (q) filtered = filtered.filter(i =>
+    i.title.toLowerCase().includes(q) ||
+    i.scrivener_path.toLowerCase().includes(q) ||
+    i.entities.some(e => e.label.toLowerCase().includes(q))
+  );
+  render(filtered);
+}
+
+function render(items) {
+  visibleItems = items;
+  const grid = document.getElementById('grid');
+  grid.innerHTML = items.map((item, idx) => {
+    const entities = item.entities.map(e => e.label).join(', ');
+    const badge = item.notes ? '<div class="note-badge">notes</div>' : '';
+    return `<div class="card" data-idx="${idx}">
+      <img src="/${item.file}" alt="${item.title}" loading="lazy">
+      ${badge}
+      <div class="overlay">
+        <div class="title">${item.title}</div>
+        <div class="path">${entities || item.scrivener_path.split('/').slice(-2).join(' / ')}</div>
+        <div class="cat">${item.category}</div>
+      </div>
+    </div>`;
+  }).join('');
+
+  grid.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', () => openLightbox(+card.dataset.idx));
+  });
+}
+
+function openLightbox(idx) {
+  currentLbIndex = idx;
+  const item = visibleItems[idx];
+  const lb = document.getElementById('lightbox');
+  document.getElementById('lb-img').src = '/' + item.file;
+  document.getElementById('lb-title').textContent = item.title;
+  document.getElementById('lb-path').textContent = item.scrivener_path;
+  const entHtml = item.entities.length
+    ? item.entities.map(e => `<span style="color: ${e.type === 'character' ? '#c8a84e' : e.type === 'setting' ? '#4a7a9b' : '#888'}">${e.label}</span>`).join(' · ')
+    : '<span>No linked entities</span>';
+  document.getElementById('lb-entities').innerHTML = entHtml;
+  const notesEl = document.getElementById('lb-notes');
+  if (item.notes) {
+    notesEl.innerHTML = `<div class="notes-label">Author's Notes</div>${item.notes}`;
+    notesEl.style.display = 'block';
+  } else {
+    notesEl.style.display = 'none';
+  }
+  lb.classList.add('active');
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+}
+
+function navigateLb(dir) {
+  const next = currentLbIndex + dir;
+  if (next >= 0 && next < visibleItems.length) openLightbox(next);
+}
+
+init();
+</script>
+</body>
+</html>

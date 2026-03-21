@@ -1,0 +1,46 @@
+---
+description: Visualization and UI philosophy for hassan-editor
+globs:
+  - src/**
+  - public/**
+alwaysApply: false
+---
+
+# Visualization Philosophy: Insight Over Polish
+
+## 1. Every Dimension is Visualizable
+
+The novel has structure: arcs, timelines, movements, scenes, statuses, word counts,
+provenance chains, character appearances, hooks, themes. Each of these is a candidate
+for a visualization. Build them as needed, discard what doesn't help.
+
+## 2. Self-Contained Components
+
+Each visualization is its own module: one TypeScript file, one CSS file, one mount point.
+No shared state beyond what the API provides. Components can be added, removed, or
+replaced without touching the rest of the app.
+
+## 3. Technique Library
+
+Try freely. The following are all fair game and should be reachable from the status bar
+or a dedicated panel:
+
+- **Graph**: D3 force-directed or similar. Scene nodes, order edges, arc coloring.
+- **Kanban**: Cards by status, draggable between columns.
+- **Timeline**: Horizontal or vertical, scenes plotted by arc and sequence.
+- **Heatmap**: Word count or status density across movements.
+- **Tree**: Sidebar-style hierarchical navigation (already exists).
+- **Diff overlay**: Side-by-side or inline revision comparison.
+
+New techniques should be added as new files, not crammed into existing components.
+
+## 4. Data Comes From the API
+
+Visualizations fetch from `/api/*` endpoints. If a visualization needs data the API
+doesn't provide, add the endpoint first — then build the UI. This keeps the
+visualization layer stateless and swappable.
+
+## 5. Rough Is Fine
+
+A working chart with default styles beats a pixel-perfect dashboard that took a week.
+Style it later if it earns its place. Kill it if it doesn't reveal anything useful.

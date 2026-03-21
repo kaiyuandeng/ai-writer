@@ -1,0 +1,17 @@
+Hackers find an exploit whilst building a money transfer application. They were bouncing around one single dollar to test the integrity of their fund transfer when the dollar disappeared mid-transfer.
+“This doesn’t happen,” one said.
+“This can’t happen, check again. The banks don’t make this sort of mistakes.”
+“They’ll think we disappeared the dollar when it doesn’t add up to one.”
+“Let them worry ‘bout that, quick, start another transfer.”
+“Another transfer? When the first…”
+“So we can test the infra. You want to fail at two jobs?”
+“Right, right, the infra. Another Pong is on the way.”
+“Ping. Good, got it. And if this one goes disappears…”
+The other grinned. “Already on that haus—I added a tracer to the logging algo so when it—”
+The single dollar disappeared again, as if on cue.
+“There! It blinked! What does the log say?”
+“There, the trace ends at Vallejo Sector.”
+They rock, paper, and scissored. One puts out rock. It is beaten by the Other’s paper. The Other grins and hands the One a space-helm.
+“Make sure to seal that one tight,” the Other said, “the seal can leak around the glass inset.”
+The One gave him a dirty look. “Shut up and give me that helmet. So wordy all of a sudden.”
+The Other handed One the helmet, which One studiously donned—quickly and with minimal effort. The helmet formed a helmetic seal with a sound like a swoosh that ended too quick. One was sealed. The Other gave him a thumbs-up; One replied; Their conversation link momentarily scrambled by the entrance into the Old Matrix.

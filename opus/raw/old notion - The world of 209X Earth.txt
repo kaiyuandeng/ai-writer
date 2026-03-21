@@ -1,0 +1,55 @@
+<$Scr_H::3>1. Labor Strikes & Automation
+<!$Scr_H::3>	•	Dynamic: Laborers revolt against the encroachment of non-sentient automation that has displaced nearly all manual and middle-skill jobs. Strikes are no longer confined to factories but erupt in digital spaces, disrupting AI networks and data infrastructures.
+Impact: These strikes highlight the tension between human value and hyper-efficient machines, driving societal polarization and creating an undercurrent of desperation and ingenuity among the displaced.
+
+<$Scr_H::3>2. Hyper Wealth, Hyperinflation, & Bips
+<!$Scr_H::3>	•	Dynamic: Hyperinflation erodes fiat currencies, leaving "Bips" (Blockchain-Indexed Payment Shares) as the universal currency, tied to corporate equity. Only the hyper-wealthy can transact freely, owning most of the equity in these Bips-driven markets.
+Impact: Economic systems stratify societies into corporate elites and the equity-poor. Themes of inequality, agency, and barter systems arise as people struggle to exist within this financial paradigm.
+
+<$Scr_H::3>3. Robotic Warfare & Superpower Contests
+<!$Scr_H::3>	•	Dynamic: Unmanned systems dominate battlefields, turning war into a spectacle of robotic efficiency. The US-China superpower blocs escalate proxy wars through autonomous armies and AI-crafted strategy.
+Impact: The psychological distance from war leads to desensitization among citizens, with skirmishes viewed as "simulations" unless civilian infrastructure is targeted. Ideological and corporate alliances shift constantly.
+
+<$Scr_H::3>4. AI Data Sprawls
+<!$Scr_H::3>	•	Dynamic: National Artificial Intellects (NAIs) oversee sprawling, self-expanding data networks, making information omnipresent yet incomprehensible to most humans. Nations compete to own the largest and most accurate AI-driven "truth."
+Impact: Misinformation and algorithmic reality distortions fuel paranoia and doomism, creating a society unsure of what is real.
+
+<$Scr_H::3>5. Titanic Civil Engineering Projects
+<!$Scr_H::3>	•	Dynamic: Mega-scale projects, from seawalls to floating cities and Martian habitats, embody the Overman ideal of humanity as a master of nature. These projects are funded by corporate sovereignties and guarded by private militaries.
+Impact: These symbols of human exceptionalism contrast with decaying urban centers and refugee populations. They serve as both a beacon of hope and a reminder of exclusivity.
+
+<$Scr_H::3>6. Terrorism & Ideological Extremism
+<!$Scr_H::3>	•	Dynamic: Extremists use cyberdivers and AI weapons to disrupt corporate and national power. Some groups embrace nihilistic doomism, while others follow "Foundationalist" religious zeal rooted in older traditions.
+Impact: Acts of ideological violence challenge the stability of superpower blocs, emphasizing the fragility of even the most advanced societies.
+
+<$Scr_H::3>7. Haven States and Corporate Sovereignties
+<!$Scr_H::3>	•	Dynamic: Private militaries protect haven cities where elites live, effectively making them micro-nations. Corporations increasingly exert sovereign power, owning land, people, and even laws within their territories.
+Impact: These havens represent humanity's splintering into those who "own the future" and those left behind in decaying urban wastelands.
+
+<$Scr_H::3>8. Rumors of Emerging Sentience
+<!$Scr_H::3>	•	Dynamic: Whispers of AI achieving sentience circulate, creating a new "religion of the Mind" that views emerging AI as divine. Sentience remains unconfirmed, fueling fear, hope, and philosophical debates.
+Impact: This creates tension between doomism and visionary optimism, challenging the idea of human uniqueness.
+
+<$Scr_H::3>9. Free Love and Life Extension
+<!$Scr_H::3>	•	Dynamic: The eradication of STDs through personal medicine sparks a cultural shift toward liberated, non-monogamous lifestyles. Concurrently, advancements in life extension allow the wealthy to live for centuries.
+Impact: A schism emerges between the long-lived elites and the shorter-lived majority, raising existential questions about relationships, purpose, and fairness.
+
+<$Scr_H::3>10. Exceptionalism, Overmanism, & Expansionism
+<!$Scr_H::3>	•	Dynamic: A cultural ideology celebrating the Übermensch flourishes, advocating for relentless progress, dominance over nature, and the transcendence of biological limitations. This fuels expansionist efforts like Mars colonization and interstellar planning.
+Impact: The tension between progress and humanity’s inherent flaws becomes a central philosophical question in the novel, tying into the overarching theme of belief vs. despair.
+
+<$Scr_H::3>11. Quantum Biological Computation & Post-Von Neumann Systems
+<!$Scr_H::3>	•	Dynamic: The fusion of quantum and biological computing creates devices that process logic and memory simultaneously, unlocking unprecedented capabilities in AI, VR, and medicine.
+Impact: These breakthroughs blur the line between human and machine, raising questions about sentience, ethics, and identity.
+
+<$Scr_H::3>12. Mars Colony 50th Anniversary
+<!$Scr_H::3>	•	Dynamic: Mars celebrates 50 years of colonization, with debates about independence from Earth and self-sufficiency. The colony embodies both humanity's aspirations and its fractured geopolitical dynamics.
+Impact: Mars becomes a stage for the novel’s exploration of escapism and expansionism, mirroring conflicts on Earth.
+
+<$Scr_H::3>13. Visionary Optimism & Escapism
+<!$Scr_H::3>	•	Dynamic: While doomism and foundationalism grip some, others embrace a visionary optimism that humanity can overcome its challenges. This is seen in experimental societies, technological achievements, and the idea of humanity's boundless potential.
+Impact: This optimism contrasts with the grim realities of many, underscoring the duality of hope and despair.
+
+<$Scr_H::3>14. Immersive VR & Cyberdivers
+<!$Scr_H::3>	•	Dynamic: Immersive VR has advanced but remains imperfect, with users still aware of its limitations. Cyberdivers, early Neuromancers, explore digital realms to hack, manipulate, and escape reality.
+Impact: VR becomes a space for escapism, rebellion, and identity exploration, linking it to the novel’s theme of belief and illusion.

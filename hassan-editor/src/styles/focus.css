@@ -1,0 +1,37 @@
+/* Hassan Editor — Focus Mode — Tufte minimal */
+
+body.focus-mode .sidebar {
+  width: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+body.focus-mode .statusbar {
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+body.focus-mode .statusbar:hover {
+  opacity: 0.6;
+}
+
+body.focus-mode .editor-container {
+  background: #080808;
+}
+
+body.focus-mode .editor-wrapper {
+  padding-top: 35vh;
+}
+
+/* Typewriter: only the current block lives */
+body.focus-mode .ProseMirror > * {
+  opacity: 0.15;
+  transition: opacity 400ms ease;
+}
+
+body.focus-mode .ProseMirror > .has-focus,
+body.focus-mode .ProseMirror > *:focus-within,
+body.focus-mode .ProseMirror .is-current-block {
+  opacity: 1;
+}

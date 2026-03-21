@@ -1,0 +1,51 @@
+/* Hassan Editor — Status Bar — Tufte minimal */
+
+.statusbar {
+  height: var(--statusbar-height);
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  font-size: 10px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.statusbar-left,
+.statusbar-center,
+.statusbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.statusbar-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.statusbar-saved {
+  color: var(--cabal-sage);
+}
+
+.statusbar-unsaved {
+  color: var(--cabal-orange);
+}
+
+.statusbar-focus-btn {
+  cursor: pointer;
+  padding: 2px 6px;
+  border: none;
+  background: none;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.statusbar-focus-btn:hover {
+  color: var(--cabal-purple);
+}

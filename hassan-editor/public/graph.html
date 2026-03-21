@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hassan — Scene Link Graph</title>
+  <style>
+    :root {
+      --bg: #0c0c0c;
+      --panel: #111;
+      --muted: #8a877f;
+      --text: #d8d4cb;
+      --border: #232323;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font: 12px -apple-system, sans-serif; }
+    .app { display: grid; grid-template-columns: 320px 1fr; height: 100vh; }
+    .left { border-right: 1px solid var(--border); padding: 16px; overflow: auto; background: var(--panel); }
+    .title { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 10px; }
+    .subtitle { color: var(--muted); margin-bottom: 16px; line-height: 1.5; }
+    .legend-item { margin-bottom: 10px; line-height: 1.45; }
+    .legend-name { display: flex; align-items: center; gap: 7px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .dot { width: 8px; height: 8px; border-radius: 999px; display: inline-block; }
+    .legend-desc { color: var(--muted); padding-left: 15px; }
+    .toolbar { margin: 14px 0; display: flex; flex-direction: column; gap: 8px; }
+    .toggle { display: flex; align-items: center; gap: 8px; color: var(--muted); }
+    .stats { margin-top: 12px; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .analysis { margin-top: 14px; border-top: 1px solid var(--border); padding-top: 10px; }
+    .analysis h3 { font-size: 10px; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 6px; color: var(--text); }
+    .analysis ul { list-style: none; margin-bottom: 10px; }
+    .analysis li { color: var(--muted); line-height: 1.4; margin-bottom: 4px; }
+    .analysis .emph { color: var(--text); }
+    .graph-wrap { position: relative; }
+    svg { width: 100%; height: 100%; display: block; }
+    .hint { position: absolute; right: 12px; bottom: 12px; color: var(--muted); font-size: 11px; }
+    .tooltip {
+      position: fixed; pointer-events: none; display: none;
+      background: #0f0f0f; border: 1px solid #2a2a2a; color: var(--text);
+      padding: 8px 10px; font-size: 11px; max-width: 280px; z-index: 10;
+    }
+    .tooltip .meta { color: var(--muted); margin-top: 3px; }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="left">
+      <div class="title">Scene Link Graph</div>
+      <div class="subtitle">Nodes are scenes. Lines show sequencing by order. Purple rationale lines indicate extrapolated bridge intent. Story arcs are separate from universe-time chronology.</div>
+      <div id="legend"></div>
+      <div class="toolbar" id="filters"></div>
+      <div class="toolbar" id="arc-tools">
+        <label class="toggle">
+          <span>story arc focus</span>
+          <select id="arc-focus">
+            <option value="">all arcs</option>
+          </select>
+        </label>
+      </div>
+      <div class="stats" id="stats">loading…</div>
+      <section class="analysis">
+        <h3>strengths</h3>
+        <ul id="strengths"></ul>
+        <h3>weaknesses</h3>
+        <ul id="weaknesses"></ul>
+        <h3>gold sanity</h3>
+        <ul id="gold"></ul>
+        <h3>heroic cycle experiment</h3>
+        <ul id="heroic-missing"></ul>
+        <svg id="heroic-chart" viewBox="0 0 280 120" style="width:100%;height:120px;border:1px solid var(--border);background:#0d0d0d"></svg>
+        <p class="subtitle" id="heroic-explain" style="margin:8px 0 0 0;"></p>
+      </section>
+    </aside>
+    <section class="graph-wrap">
+      <svg id="graph"></svg>
+      <div class="hint">drag nodes · wheel to zoom · hover to inspect</div>
+    </section>
+  </div>
+  <div class="tooltip" id="tip"></div>
+
+  <script src="https://unpkg.com/d3@7"></script>
+  <script>
+    const storyArcColors = { A: '#895cdb', B: '#2f9bfa', C: '#181cf5' };
+    const tip = document.getElementById('tip');
+    const svg = d3.select('#graph');
+    const g = svg.append('g');
+    const width = () => window.innerWidth - 320;
+    const height = () => window.innerHeight;
+
+    const zoom = d3.zoom().scaleExtent([0.3, 3]).on('zoom', (e) => g.attr('transform', e.transform));
+    svg.call(zoom);
+
+    function showTip(html, x, y) {
+      tip.innerHTML = html;
+      tip.style.display = 'block';
+      tip.style.left = `${x + 10}px`;
+      tip.style.top = `${y + 10}px`;
+    }
+    function hideTip() { tip.style.display = 'none'; }
+
+    Promise.all([
+      fetch('/api/graph').then((r) => r.json()),
+      fetch('/api/analysis/story-health').then((r) => r.json()),
+    ]).then(([data, health]) => {
+      const enabled = new Set(data.legends.map((l) => l.name));
+      let activeArc = '';
+
+      // Legend + sort explanations
+      const legendEl = document.getElementById('legend');
+      legendEl.innerHTML = data.legends.map((l) => `
+        <div class="legend-item">
+          <div class="legend-name"><span class="dot" style="background:${l.color}"></span>${l.name}</div>
+          <div class="legend-desc">${l.description}</div>
+        </div>
+      `).join('');
+
+      // Filters
+      const filtersEl = document.getElementById('filters');
+      filtersEl.innerHTML = data.legends.map((l) => `
+        <label class="toggle">
+          <input type="checkbox" data-kind="${l.name}" checked />
+          <span>${l.name}</span>
+        </label>
+      `).join('');
+      filtersEl.querySelectorAll('input').forEach((input) => {
+        input.addEventListener('change', () => {
+          const kind = input.dataset.kind;
+          if (input.checked) enabled.add(kind); else enabled.delete(kind);
+          render();
+        });
+      });
+
+      const nodes = data.nodes.map((n) => ({ ...n }));
+      const allLinks = data.links.map((l) => ({ ...l }));
+      const nodeById = new Map(nodes.map((n) => [Number(n.id), n]));
+
+      document.getElementById('stats').textContent = `${nodes.length} scenes · ${allLinks.length} total links`;
+
+      const strengthsEl = document.getElementById('strengths');
+      const weaknessesEl = document.getElementById('weaknesses');
+      const goldEl = document.getElementById('gold');
+      const heroicMissingEl = document.getElementById('heroic-missing');
+      const heroicExplainEl = document.getElementById('heroic-explain');
+      const arcSelect = document.getElementById('arc-focus');
+
+      strengthsEl.innerHTML = [
+        `<li><span class="emph">${health.strongSignals.connectedScenes}</span> connected scenes</li>`,
+        `<li><span class="emph">${health.strongSignals.contiguousGoldSequences}</span> contiguous GOLD sequences</li>`,
+      ].join('');
+
+      weaknessesEl.innerHTML = [
+        `<li><span class="emph">${health.weakSignals.orphanScenes}</span> orphan scenes</li>`,
+        `<li><span class="emph">${health.weakSignals.weaklyConnectedScenes}</span> weakly connected scenes</li>`,
+        `<li><span class="emph">${health.weakSignals.extrapolatedWithoutBridge}</span> extrapolated scenes missing explicit bridge links</li>`,
+      ].join('');
+
+      const topSequences = (health.goldSanity.contiguousSequences || [])
+        .slice(0, 4)
+        .map((s) => `<li>${s.story_arc}: ${s.startSceneNumber}→${s.endSceneNumber} (<span class="emph">${s.count}</span> scenes)</li>`)
+        .join('');
+      goldEl.innerHTML = [
+        `<li><span class="emph">${health.goldSanity.totalGoldScenes}</span> total GOLD scenes</li>`,
+        `<li><span class="emph">${health.goldSanity.orphanSceneIds.length}</span> GOLD orphans</li>`,
+        topSequences || '<li>No contiguous GOLD sequences yet.</li>',
+      ].join('');
+
+      const arcKeys = Object.keys(health.heroicCycle?.curves || {});
+      arcSelect.innerHTML = ['<option value="">all arcs</option>']
+        .concat(arcKeys.map((k) => `<option value="${k}">${k}</option>`))
+        .join('');
+
+      heroicExplainEl.textContent = `metric: ${health.heroicCycle?.explanation || 'not available'}`;
+
+      function getHeroicPoints() {
+        if (!health.heroicCycle?.curves) return [];
+        if (activeArc && health.heroicCycle.curves[activeArc]) return health.heroicCycle.curves[activeArc];
+        const merged = [];
+        for (const key of Object.keys(health.heroicCycle.curves)) {
+          merged.push(...health.heroicCycle.curves[key]);
+        }
+        return merged.sort((a, b) => a.index - b.index);
+      }
+
+      function renderHeroic() {
+        const svgEl = d3.select('#heroic-chart');
+        svgEl.selectAll('*').remove();
+        const points = getHeroicPoints();
+        if (!points.length) {
+          heroicMissingEl.innerHTML = '<li>No story arc data yet.</li>';
+          return;
+        }
+
+        const width = 280, height = 120, pad = 12;
+        const x = d3.scaleLinear().domain([0, Math.max(1, points.length - 1)]).range([pad, width - pad]);
+        const y = d3.scaleLinear().domain([0, 100]).range([height - pad, pad]);
+
+        const expectedLine = d3.line().x((d, i) => x(i)).y((d) => y(d.expected));
+        const actualLine = d3.line().x((d, i) => x(i)).y((d) => y(d.intensity));
+
+        svgEl.append('path')
+          .datum(points)
+          .attr('d', expectedLine)
+          .attr('fill', 'none')
+          .attr('stroke', '#6a6a6a')
+          .attr('stroke-dasharray', '3,2')
+          .attr('stroke-width', 1.2);
+
+        svgEl.append('path')
+          .datum(points)
+          .attr('d', actualLine)
+          .attr('fill', 'none')
+          .attr('stroke', '#d8d4cb')
+          .attr('stroke-width', 1.6);
+
+        svgEl.selectAll('circle')
+          .data(points)
+          .join('circle')
+          .attr('cx', (d, i) => x(i))
+          .attr('cy', (d) => y(d.intensity))
+          .attr('r', 2.4)
+          .attr('fill', (d) => storyArcColors[d.story_arc.replace('story-arc-', '').toUpperCase()] || '#bbb');
+
+        const missingByArc = health.heroicCycle?.missingByArc || {};
+        const missing = activeArc
+          ? (missingByArc[activeArc] || [])
+          : Object.values(missingByArc).flat();
+        heroicMissingEl.innerHTML = missing.length
+          ? missing.slice(0, 4).map((m) => `<li>${m}</li>`).join('')
+          : '<li>No major heroic-cycle gaps detected with current heuristic.</li>';
+      }
+
+      function render() {
+        g.selectAll('*').remove();
+        const links = allLinks.filter((l) => {
+          if (!(enabled.has(l.order) || enabled.has(l.kind))) return false;
+          if (!activeArc) return true;
+          const sourceArc = `story-arc-${String(nodeById.get(Number(l.source))?.story_arc || '').toLowerCase()}`;
+          const targetArc = `story-arc-${String(nodeById.get(Number(l.target))?.story_arc || '').toLowerCase()}`;
+          return sourceArc === activeArc || targetArc === activeArc;
+        });
+        const visibleNodes = activeArc
+          ? nodes.filter((n) => n.story_arc && `story-arc-${String(n.story_arc).toLowerCase()}` === activeArc)
+          : nodes;
+
+        const simulation = d3.forceSimulation(visibleNodes)
+          .force('link', d3.forceLink(links).id((d) => d.id).distance(32).strength(0.18))
+          .force('charge', d3.forceManyBody().strength(-72))
+          .force('center', d3.forceCenter(width() / 2, height() / 2))
+          .force('collision', d3.forceCollide().radius(7));
+
+        const link = g.append('g')
+          .attr('stroke-opacity', 0.6)
+          .selectAll('line')
+          .data(links)
+          .join('line')
+          .attr('stroke', (d) => d.color || '#666')
+          .attr('stroke-width', (d) => d.kind === 'extrapolated' ? 2 : 1)
+          .attr('stroke-dasharray', (d) => d.kind === 'extrapolated' ? '3,2' : null)
+          .on('mousemove', (e, d) => {
+            const why = d.why ? `<div>${d.why}</div>` : '';
+            showTip(`<div>${d.order}</div>${why}`, e.clientX, e.clientY);
+          })
+          .on('mouseleave', hideTip);
+
+        const node = g.append('g')
+          .selectAll('circle')
+          .data(visibleNodes)
+          .join('circle')
+          .attr('r', 4)
+          .attr('fill', (d) => storyArcColors[d.story_arc] || '#888')
+          .attr('stroke', (d) => d.provenance === 'EXTRAPOLATED' ? '#895cdb' : '#111')
+          .attr('stroke-width', (d) => d.provenance === 'EXTRAPOLATED' ? 2 : 1)
+          .call(d3.drag()
+            .on('start', (e, d) => { if (!e.active) simulation.alphaTarget(0.25).restart(); d.fx = d.x; d.fy = d.y; })
+            .on('drag', (e, d) => { d.fx = e.x; d.fy = e.y; })
+            .on('end', (e, d) => { if (!e.active) simulation.alphaTarget(0); d.fx = null; d.fy = null; }))
+          .on('mousemove', (e, d) => {
+            showTip(
+              `<div>${d.scene_number}. ${d.title}</div><div class="meta">story-arc-${String(d.story_arc).toLowerCase()} · ${d.status} · ${d.provenance}</div>`,
+              e.clientX,
+              e.clientY
+            );
+          })
+          .on('mouseleave', hideTip);
+
+        simulation.on('tick', () => {
+          link
+            .attr('x1', (d) => d.source.x)
+            .attr('y1', (d) => d.source.y)
+            .attr('x2', (d) => d.target.x)
+            .attr('y2', (d) => d.target.y);
+          node
+            .attr('cx', (d) => d.x)
+            .attr('cy', (d) => d.y);
+        });
+      }
+
+      arcSelect.addEventListener('change', () => {
+        activeArc = arcSelect.value;
+        render();
+        renderHeroic();
+      });
+
+      render();
+      renderHeroic();
+      window.addEventListener('resize', () => svg.attr('viewBox', [0, 0, width(), height()]));
+      svg.attr('viewBox', [0, 0, width(), height()]);
+    }).catch((err) => {
+      document.getElementById('stats').textContent = `failed to load graph: ${err.message}`;
+    });
+  </script>
+</body>
+</html>

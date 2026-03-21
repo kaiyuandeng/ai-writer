@@ -1,0 +1,127 @@
+/* Hassan Editor — Kanban Board — Tufte minimal */
+
+.kanban {
+  display: none;
+  flex: 1;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 24px 16px;
+  gap: 12px;
+  background: var(--bg);
+}
+
+.kanban.active {
+  display: flex;
+}
+
+.kanban-column {
+  min-width: 220px;
+  max-width: 260px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.kanban-column-header {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  padding: 0 4px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.kanban-column-count {
+  font-size: 9px;
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+.kanban-column-body {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 2px;
+}
+
+.kanban-column-body.drag-over {
+  outline: 1px solid var(--cabal-purple);
+  outline-offset: -1px;
+  border-radius: 2px;
+}
+
+.kanban-card {
+  padding: 8px 10px;
+  font-family: var(--font-prose);
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--text);
+  cursor: grab;
+  border-left: 2px solid transparent;
+  transition: opacity 150ms ease;
+}
+
+.kanban-card:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.kanban-card.dragging {
+  opacity: 0.3;
+}
+
+.kanban-card[data-story-arc="A"] {
+  border-left-color: var(--story-arc-a);
+}
+
+.kanban-card[data-story-arc="B"] {
+  border-left-color: var(--story-arc-b);
+}
+
+.kanban-card[data-story-arc="C"] {
+  border-left-color: var(--story-arc-c);
+}
+
+.kanban-card-title {
+  display: block;
+  margin-bottom: 2px;
+}
+
+.kanban-card-meta {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--text-muted);
+}
+
+/* Provenance on cards */
+.kanban-prov {
+  letter-spacing: 0.03em;
+}
+
+.kanban-prov-gold {
+  color: var(--cabal-orange);
+}
+
+.kanban-prov-edited {
+  color: var(--cabal-sage);
+}
+
+.kanban-prov-extrapolated {
+  color: var(--cabal-purple);
+}
+
+/* Hide sidebar when kanban is active */
+body.kanban-mode .sidebar {
+  display: none;
+}
+
+body.kanban-mode .editor-container {
+  display: none;
+}

@@ -1,0 +1,34 @@
+---
+description: Living lessons log — consult before major changes
+globs:
+  - server/**
+  - src/**
+  - .cursor/rules/**
+alwaysApply: false
+---
+
+# Project Lessons
+
+Consult this file before making architectural changes. Update it when a bug,
+design mistake, or hard-won insight is worth preserving.
+
+## 2026-03-20 — Provenance leak: AI-created scenes defaulting to GOLD
+
+**What happened:** Scenes created via `POST /api/scenes` always defaulted to
+`GOLD` provenance at the database level. The endpoint didn't accept a
+`provenance` field. Any scene created through the API — including AI-assisted
+sessions — got stamped as the author's original work.
+
+**How we caught it:** Compared `created_at` timestamps. Scenes 117 and 118 were
+created 43+ minutes after the bulk import, during an AI co-writing session, but
+carried `GOLD` provenance identical to the hand-written corpus.
+
+**The fix:** `POST /api/scenes` now accepts `provenance` and `provenance_meta`
+on creation. Defaults to `GOLD` when omitted (editor still works for hand-writing),
+but AI workflows must pass `provenance: "EXTRAPOLATED"` at creation time.
+
+**The rule going forward:** When this agent creates scenes, always set
+`provenance: "EXTRAPOLATED"` with `provenance_meta` containing `method`,
+`session` date, and a `note`. Never let AI-generated content enter the database
+as `GOLD`. The provenance system is the author's trust boundary — leaking it
+is a data integrity bug, not a cosmetic issue.

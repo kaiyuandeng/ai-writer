@@ -1,0 +1,173 @@
+/* Hassan Editor — Prose Editor — Tufte minimal */
+
+.editor-container {
+  flex: 1;
+  height: calc(100vh - var(--statusbar-height));
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  background: var(--bg);
+}
+
+.editor-wrapper {
+  width: 100%;
+  max-width: var(--prose-width);
+  padding: 80px 24px 240px;
+}
+
+/* Provenance badge — Tufte: data-ink only */
+.provenance-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding-bottom: 12px;
+  margin-bottom: 24px;
+  user-select: none;
+}
+
+.provenance-label {
+  letter-spacing: 0.06em;
+}
+
+.provenance-detail {
+  color: var(--text-muted);
+  font-size: 9px;
+}
+
+.provenance-gold .provenance-label {
+  color: var(--cabal-orange);
+}
+
+.provenance-edited .provenance-label {
+  color: var(--cabal-sage);
+}
+
+.provenance-extrapolated .provenance-label {
+  color: var(--cabal-purple);
+}
+
+.provenance-extrapolated {
+  border-bottom: 1px dashed rgba(137, 92, 219, 0.25);
+  padding-bottom: 14px;
+}
+
+.editor-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-family: var(--font-prose);
+  font-style: italic;
+}
+
+/* TipTap / ProseMirror — the prose is everything */
+.ProseMirror {
+  font-family: var(--font-prose);
+  font-size: var(--prose-size);
+  line-height: var(--prose-height);
+  color: var(--text);
+  outline: none;
+  caret-color: var(--cabal-orange);
+}
+
+.ProseMirror p {
+  margin-bottom: 0.85em;
+  text-indent: 1.5em;
+}
+
+.ProseMirror p:first-child {
+  text-indent: 0;
+}
+
+.ProseMirror h1 {
+  font-size: 1.5em;
+  font-weight: 400;
+  margin: 2em 0 0.8em;
+  color: var(--text);
+  text-indent: 0;
+  letter-spacing: 0.01em;
+}
+
+.ProseMirror h2 {
+  font-size: 1.2em;
+  font-weight: 400;
+  margin: 1.5em 0 0.6em;
+  color: var(--text);
+  text-indent: 0;
+}
+
+.ProseMirror h3 {
+  font-size: 1em;
+  font-weight: 600;
+  margin: 1.2em 0 0.5em;
+  color: var(--text-muted);
+  text-indent: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-family: var(--font-ui);
+  font-size: 10px;
+}
+
+.ProseMirror strong {
+  font-weight: 700;
+}
+
+.ProseMirror em {
+  font-style: italic;
+}
+
+.ProseMirror blockquote {
+  border-left: 1px solid var(--text-muted);
+  padding-left: 1.5em;
+  margin: 1.2em 0;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Placeholder — quiet */
+.ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: var(--text-muted);
+  float: left;
+  pointer-events: none;
+  height: 0;
+  font-style: italic;
+  opacity: 0.6;
+}
+
+/* Frontmatter — sidenote style, Tufte-inspired */
+.frontmatter-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 0;
+  margin-bottom: 24px;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  user-select: none;
+}
+
+.frontmatter-toggle:hover {
+  color: var(--cabal-purple);
+}
+
+.frontmatter-content {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  padding: 12px 0;
+  margin-bottom: 32px;
+  white-space: pre-wrap;
+  border-top: 1px solid rgba(90, 87, 80, 0.2);
+}
+
+.frontmatter-content.hidden {
+  display: none;
+}

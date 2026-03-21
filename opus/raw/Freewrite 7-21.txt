@@ -1,0 +1,76 @@
+Free write with an album. Ways to help me write. Start writing like how I start at the gym, with a brisk fifteen minute walk. Go go go. Don’t over think, just do. And do spell some words right, that’s a portion of the fun. Wink.
+
+Why turn writing into such a chore? And, the writing is done in the Writing. It is not done by conception of thought along, such as—and once again—the gym; I cannot get stronger and more ripped by planning on my google calendar how much training I’ll do. I only get results by going into the gym. However, it becomes part of the process to plan: Monday—legs, push, today, rehab; Tuesday—Pulling or Pushing upper body (lazy; like pulling, but lack pursuit; not energetic about pushing; push-ups, bench, etc. Shoulders need work.).
+
+Listening to Sea Power: From the sea to the land beyond
+
+I’m having a moment: I’m stoned. I’m writing. My feet are tired but healing. My knees are stable and tender. Healing also. And I’m finally writing again! Again! Hurray! No hindrance, no ego; I’ve learned that bad writing is egotistical writing. The reader can smell the reek of the writer if the intention is not to tell a good story; Thus is the goal and pursuit and measurement of narrative writing; narrative sentences do not need to impress on themselves along but survive and thrive in the whole brilliance and coherence and grander beauty of the Work.
+
+I’m going with my gut. It’s not the weed. Today’s not the day yet to return to Jiu Jitsu. I need today and tomorrow’s yoga to limber up while I rehabilitate my limbs in the morning. Today’s “Leg Day” was an astounding success. I had no great expectations for it but it happened. I started with a gentle row and twenty minutes of walking, that naturally evolved and challenged the workout to become a long warm-up session, which really bordered on a high level HIIT session. I jumped for seven—ten minutes. 8:10 PM restorative yoga tonight. Yoga and Meizner tomorrow. Then Wednesday the return to Jiu Jitsu—keep it consistent and healthy. Rest from tennis; the opportunity to play will naturally come. Perhaps it’ll come from cleaning out my space of boxes and my car’s trunk so that I can use the new ball machine. Practicing shots will make them less precious in matches.
+
+She said I had “success building suspense.” I ought to use it. She said it about Crichton but recalled my writing as well.
+
+Crichton has a penchant and success for building suspense.
+
+Thought: People go “nutty”, dying of an effervescent and teary joy. They ramble about something called “The Beautitude.”
+
+It’s like staring into the Sun. What the Beautitude really is, is the apotheotic reveal/epiphany/theophany of the Great Intelligence—the Weirdie/Spooky Actor/Machine Spirit Deep Beneath.
+
+The internet is filled with cache. Old highways. Old connections into archaic systems. Dead bramble paths of dead code; Unreachable subnets; Dark Nets; Deep Nets.
+
+
+“What is the Internet?”
+The Internet transfers data between computers.
+Laptops, phones, tablets, car navigators, pacemakers, etc.
+Study CS 168 Notes to get an overview of the Internet’s architecture and use it metaphorically to influence a science fiction design that portends the Old Matrix; Om.
+“You want to get out of OM, that’s just cosmic noise.” —About the Old Matrix.
+“Listen to the Universal Vibration; it has a tone and that tone is Om. It is low.”
+
+The Tarots describe my romantic life as: Death; to 7 of Pentacles (balance; lacking); to Page of Swords (Opportunities for Growth).
+I claim I’m not getting laid this year, but I have had no desire and the women have not attracted me. And now that I want it more, I see opportunities: girl at the weed store; any of the tennis girls; asian girls at tennis; hinge hookups; nina recently; anyone at yoga; etc, etc. It is a figment of the mind. The Death Tarot means death of the current life and thus the beginning of a new one. That then is needed by fixing imbalance and reintroducing balance. Thus, becoming the Page of Swords, an erect young man with many sexual and romantic opportunities. I abide.
+
+I want to finish Hassan this year. Let’s go. And Nora has offered to reaad through the entire first editorial draft; I would be very blessed and grateful for this to happen—and that means I want/need/ought/should/portended/will finish this draft this year. Go.
+
+
+
+### Move to Hassan
+
+Just write don’t be intimidated.
+
+“Prose can’t rhyme and chime and repeat a beat as poetry can, or if it does it had better be subtler about it than the first half of this sentence.” —Le Guin.
+“The rhythms of prose—and repetition is the central means of achieving rhythm—are usually hidden or obscure, not obvious. They may be long and large, involving the whole shape of a story, the whole course of events in a novel: so large they’re hard to see like the shape of mountains when you’re driving on a mountain road. But the mountains are there. [See how she cheekily used ‘mountains’ three times without it sounding awkward? That’s the mark of a master.]
+
+Daily Writing Warm-up (x-inspired by gym/fitness/meditation)
+
+15 minutes of free “walking”
+Get into whatever is the day’s theme
+M-? Tu-?…
+
+Morning, 530-7 a.m.: Reading.
+7-10 a.m.: Gym, resting
+10 a.m.-… involved in work
+10 p.m.: Sleep
+
+The Internet: Must Handle Failure At Scale
+The internet is made possible by protocols: a way to communicate. A specification on how to communicate. Even more strict.
+
+The Internet has Layers. This will be important and thematic for Hassan.
+
+L1—Physical space; What if quantum/entanglement can make information sharing instant instead of very fast on the wire? Physical wire.
+L2—Local Network of machines that communicate in packets. Ethernet. Links.
+L3—Connecting Local Networks (Best Effort). IP—Internet Protocol is the only protocol at this layer.
+L4—Reliability in the Transport Layer. TCP, UDP.
+L5—[Obsolete] Sessions
+L6—[Obsolete] Presentation
+L7—Application. HTTP, DNS
+
+The Internet is a network of networks.
+End-hosts; Switches (aka routers, or postal offices in each local network)
+Packets “hop” to reach its destination. In Hassan: Hopping is teleporting.
+
+
+
+Titan Lee; Tyrant Lee
+
+
+
