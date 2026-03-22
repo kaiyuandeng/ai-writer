@@ -48,6 +48,22 @@ describe('Database Schema', () => {
     expect(names).toContain('imported_at');
   });
 
+  it('creates heap tables', () => {
+    const pieceCols = db.prepare("PRAGMA table_info(pieces)").all() as any[];
+    const pieceNames = pieceCols.map((c: any) => c.name);
+    expect(pieceNames).toContain('kind');
+    expect(pieceNames).toContain('conviction');
+    expect(pieceNames).toContain('tags');
+    expect(pieceNames).toContain('meta');
+
+    const assocCols = db.prepare("PRAGMA table_info(associations)").all() as any[];
+    const assocNames = assocCols.map((c: any) => c.name);
+    expect(assocNames).toContain('source_id');
+    expect(assocNames).toContain('target_id');
+    expect(assocNames).toContain('kind');
+    expect(assocNames).toContain('weight');
+  });
+
   it('creates characters table', () => {
     const cols = db.prepare("PRAGMA table_info(characters)").all() as any[];
     const names = cols.map((c: any) => c.name);
@@ -165,5 +181,35 @@ describe('Database Operations', () => {
     const wellScenes = db.prepare('SELECT * FROM scenes WHERE movement = ?').all('01-the-well') as any[];
     expect(wellScenes.length).toBe(1);
     expect(wellScenes[0].title).toBe('Well 1');
+  });
+
+  it('blocks deleting pieces via heap invariant trigger', () => {
+    db.prepare(`
+      INSERT INTO pieces (kind, title, content, conviction, tags, meta)
+      VALUES ('scene', 'Sample', 'Text', 50, '[]', '{}')
+    `).run();
+
+    expect(() => {
+      db.prepare('DELETE FROM pieces WHERE id = 1').run();
+    }).toThrow(/HEAP INVARIANT/);
+  });
+
+  it('blocks deleting associations via heap invariant trigger', () => {
+    db.prepare(`
+      INSERT INTO pieces (kind, title, content, conviction, tags, meta)
+      VALUES ('scene', 'A', 'Text A', 50, '[]', '{}')
+    `).run();
+    db.prepare(`
+      INSERT INTO pieces (kind, title, content, conviction, tags, meta)
+      VALUES ('scene', 'B', 'Text B', 50, '[]', '{}')
+    `).run();
+    db.prepare(`
+      INSERT INTO associations (source_id, target_id, kind, label, weight, meta)
+      VALUES (1, 2, 'follows', '', 1.0, '{}')
+    `).run();
+
+    expect(() => {
+      db.prepare('DELETE FROM associations WHERE id = 1').run();
+    }).toThrow(/HEAP INVARIANT/);
   });
 });

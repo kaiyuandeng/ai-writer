@@ -93,6 +93,42 @@ export function createDb(dbPath?: string): Database.Database {
       created_at TEXT NOT NULL DEFAULT (datetime('now')),
       updated_at TEXT NOT NULL DEFAULT (datetime('now'))
     );
+
+    CREATE TABLE IF NOT EXISTS pieces (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      kind TEXT NOT NULL,
+      title TEXT NOT NULL DEFAULT '',
+      content TEXT NOT NULL DEFAULT '',
+      word_count INTEGER NOT NULL DEFAULT 0,
+      conviction INTEGER NOT NULL DEFAULT 0,
+      provenance TEXT NOT NULL DEFAULT 'GOLD',
+      tags TEXT NOT NULL DEFAULT '[]',
+      meta TEXT NOT NULL DEFAULT '{}',
+      migrated_from_table TEXT,
+      migrated_from_id INTEGER,
+      created_at TEXT NOT NULL DEFAULT (datetime('now')),
+      updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+    );
+
+    CREATE TABLE IF NOT EXISTS associations (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      source_id INTEGER NOT NULL,
+      target_id INTEGER NOT NULL,
+      kind TEXT NOT NULL,
+      label TEXT NOT NULL DEFAULT '',
+      weight REAL NOT NULL DEFAULT 1.0,
+      meta TEXT NOT NULL DEFAULT '{}',
+      created_at TEXT NOT NULL DEFAULT (datetime('now')),
+      UNIQUE(source_id, target_id, kind),
+      FOREIGN KEY (source_id) REFERENCES pieces(id),
+      FOREIGN KEY (target_id) REFERENCES pieces(id)
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_pieces_kind ON pieces(kind);
+    CREATE INDEX IF NOT EXISTS idx_pieces_conviction ON pieces(conviction);
+    CREATE INDEX IF NOT EXISTS idx_assoc_source ON associations(source_id);
+    CREATE INDEX IF NOT EXISTS idx_assoc_target ON associations(target_id);
+    CREATE INDEX IF NOT EXISTS idx_assoc_kind ON associations(kind);
   `);
 
   // ===================================================
@@ -127,6 +163,18 @@ export function createDb(dbPath?: string): Database.Database {
     WHEN OLD.provenance = 'GOLD' AND NEW.content != OLD.content
     BEGIN
       SELECT RAISE(ABORT, 'INVARIANT VIOLATION: GOLD gulped content is immutable');
+    END;
+
+    CREATE TRIGGER IF NOT EXISTS heap_pieces_no_delete
+    BEFORE DELETE ON pieces
+    BEGIN
+      SELECT RAISE(ABORT, 'HEAP INVARIANT: pieces are permanent and cannot be deleted');
+    END;
+
+    CREATE TRIGGER IF NOT EXISTS heap_associations_no_delete
+    BEFORE DELETE ON associations
+    BEGIN
+      SELECT RAISE(ABORT, 'HEAP INVARIANT: associations are permanent and cannot be deleted');
     END;
   `);
 
@@ -163,6 +211,15 @@ export function createDb(dbPath?: string): Database.Database {
     db.exec("ALTER TABLE characters ADD COLUMN story_arc TEXT");
   }
   db.exec("UPDATE characters SET story_arc = COALESCE(story_arc, timeline)");
+
+  const pieceCols = db.prepare("PRAGMA table_info(pieces)").all() as { name: string }[];
+  const pieceColNames = new Set(pieceCols.map((c) => c.name));
+  if (!pieceColNames.has('migrated_from_table')) {
+    db.exec("ALTER TABLE pieces ADD COLUMN migrated_from_table TEXT");
+  }
+  if (!pieceColNames.has('migrated_from_id')) {
+    db.exec("ALTER TABLE pieces ADD COLUMN migrated_from_id INTEGER");
+  }
 
   return db;
 }

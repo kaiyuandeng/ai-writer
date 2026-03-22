@@ -3,6 +3,9 @@ import { EditorPane } from './editor/EditorPane';
 import { FocusMode } from './focus/FocusMode';
 import { Kanban } from './kanban/Kanban';
 import { Gulper } from './gulper/Gulper';
+import { HeapPanel } from './heap/HeapPanel';
+import { GraphPanel } from './visual/GraphPanel';
+import { SievePanel } from './visual/SievePanel';
 import './styles/base.css';
 import './styles/sidebar.css';
 import './styles/editor.css';
@@ -11,6 +14,8 @@ import './styles/statusbar.css';
 import './styles/kanban.css';
 import './styles/scenenav.css';
 import './styles/gulper.css';
+import './styles/heap.css';
+import './styles/visual-panels.css';
 
 // --- App Shell ---
 const app = document.getElementById('app')!;
@@ -30,9 +35,11 @@ statusbar.innerHTML = `
   </div>
   <div class="statusbar-right">
     <span class="statusbar-item statusbar-saved" id="sb-save">saved</span>
-    <button class="statusbar-focus-btn" id="sb-graph" title="Scene Link Graph">⌗ graph</button>
+    <button class="statusbar-focus-btn" id="sb-graph" title="Graph Panel">⌗ graph</button>
+    <button class="statusbar-focus-btn" id="sb-sieve" title="Sieve Panel">⌬ sieve</button>
     <button class="statusbar-focus-btn" id="sb-inspirations" title="Inspiration Gallery">✦ inspirations</button>
     <button class="statusbar-focus-btn" id="sb-gulper" title="The Gulper (⌘⇧I)">⌾ gulper</button>
+    <button class="statusbar-focus-btn" id="sb-heap" title="Heap Panel (⌘⇧H)">◇ heap</button>
     <button class="statusbar-focus-btn" id="sb-board" title="Board View (⌘⇧B)">◫ board</button>
     <button class="statusbar-focus-btn" id="sb-focus" title="Focus Mode (⌘⇧F)">◉ focus</button>
   </div>
@@ -47,6 +54,8 @@ const sbSave = document.getElementById('sb-save')!;
 const sbGraph = document.getElementById('sb-graph')!;
 const sbInspirations = document.getElementById('sb-inspirations')!;
 const sbGulper = document.getElementById('sb-gulper')!;
+const sbHeap = document.getElementById('sb-heap')!;
+const sbSieve = document.getElementById('sb-sieve')!;
 const sbBoard = document.getElementById('sb-board')!;
 const sbFocus = document.getElementById('sb-focus')!;
 
@@ -70,11 +79,16 @@ const sidebar = new Sidebar(mainLayout, (id, type) => {
     sbFile.textContent = `Scene #${id}`;
     history.replaceState(null, '', `#scene/${id}`);
     sidebar.setActiveSelection(id, 'scene');
-  } else {
+  } else if (type === 'raw') {
     editor.loadRaw(id);
     sbFile.textContent = `Raw #${id}`;
     history.replaceState(null, '', `#raw/${id}`);
     sidebar.setActiveSelection(id, 'raw');
+  } else {
+    editor.loadPiece(id);
+    sbFile.textContent = `Piece #${id}`;
+    history.replaceState(null, '', `#piece/${id}`);
+    sidebar.setActiveSelection(id, 'piece');
   }
   sessionActive = false;
 });
@@ -87,10 +101,56 @@ window.addEventListener('scene:order-change', ((e: CustomEvent) => {
 
 // --- The Gulper ---
 const gulper = new Gulper(mainLayout);
+const heapPanel = new HeapPanel(mainLayout);
+const graphPanel = new GraphPanel(mainLayout);
+const sievePanel = new SievePanel(mainLayout);
+let kanban: Kanban | null = null;
 
-// --- Inspiration Gallery ---
+function closePanels() {
+  if (gulper.isActive) {
+    gulper.hide();
+    document.body.classList.remove('gulper-mode');
+    sbGulper.textContent = '⌾ gulper';
+  }
+  if (heapPanel.active) {
+    heapPanel.hide();
+    sbHeap.textContent = '◇ heap';
+  }
+  if (kanban?.isActive) {
+    kanban.hide();
+    sbBoard.textContent = '◫ board';
+  }
+  graphPanel.hide();
+  sbGraph.textContent = '⌗ graph';
+  sievePanel.hide();
+  sbSieve.textContent = '⌬ sieve';
+}
+
+// --- Visualization Panels ---
 sbGraph.addEventListener('click', () => {
-  window.open('/graph.html', '_blank', 'noopener,noreferrer');
+  if (sbGraph.textContent?.includes('binder')) {
+    graphPanel.hide();
+    sbGraph.textContent = '⌗ graph';
+    history.replaceState(null, '', '/');
+    return;
+  }
+  closePanels();
+  graphPanel.show();
+  sbGraph.textContent = '⌗ binder';
+  history.replaceState(null, '', '/graph');
+});
+
+sbSieve.addEventListener('click', () => {
+  if (sbSieve.textContent?.includes('binder')) {
+    sievePanel.hide();
+    sbSieve.textContent = '⌬ sieve';
+    history.replaceState(null, '', '/');
+    return;
+  }
+  closePanels();
+  sievePanel.show();
+  sbSieve.textContent = '⌬ binder';
+  history.replaceState(null, '', '/sieve');
 });
 
 sbInspirations.addEventListener('click', () => {
@@ -104,10 +164,7 @@ sbGulper.addEventListener('click', () => {
     sbGulper.textContent = '⌾ gulper';
     history.replaceState(null, '', '/');
   } else {
-    if (kanban.isActive) {
-      kanban.hide();
-      sbBoard.textContent = '◫ board';
-    }
+    closePanels();
     gulper.show();
     document.body.classList.add('gulper-mode');
     sbGulper.textContent = '⌾ binder';
@@ -123,10 +180,31 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
+sbHeap.addEventListener('click', () => {
+  if (heapPanel.active) {
+    heapPanel.hide();
+    sbHeap.textContent = '◇ heap';
+    history.replaceState(null, '', '/');
+  } else {
+    closePanels();
+    heapPanel.show();
+    sbHeap.textContent = '◇ binder';
+    history.replaceState(null, '', '/heap');
+  }
+});
+
+// Keyboard shortcut: ⌘⇧H
+window.addEventListener('keydown', (e) => {
+  if (e.metaKey && e.shiftKey && e.key.toLowerCase() === 'h') {
+    e.preventDefault();
+    sbHeap.click();
+  }
+});
+
 // --- Kanban Board ---
-const kanban = new Kanban(mainLayout, (sceneId) => {
+kanban = new Kanban(mainLayout, (sceneId) => {
   // Click card → switch to editor view and open that scene
-  kanban.hide();
+  kanban?.hide();
   sbBoard.textContent = '◫ board';
   editor.loadScene(sceneId);
   sbFile.textContent = `Scene #${sceneId}`;
@@ -136,17 +214,12 @@ const kanban = new Kanban(mainLayout, (sceneId) => {
 });
 
 sbBoard.addEventListener('click', () => {
-  if (kanban.isActive) {
+  if (kanban?.isActive) {
     kanban.hide();
     sbBoard.textContent = '◫ board';
   } else {
-    // Close gulper if open
-    if (gulper.isActive) {
-      gulper.hide();
-      document.body.classList.remove('gulper-mode');
-      sbGulper.textContent = '⌾ gulper';
-    }
-    kanban.show();
+    closePanels();
+    kanban?.show();
     sbBoard.textContent = '◫ binder';
   }
 });
@@ -180,13 +253,25 @@ window.addEventListener('focus:change', ((e: CustomEvent) => {
 
 // --- URL deep-linking: #scene/117 or #raw/42 ---
 function loadFromRoute() {
+  if (location.pathname === '/graph') {
+    if (!sbGraph.textContent?.includes('binder')) sbGraph.click();
+    return true;
+  }
+  if (location.pathname === '/sieve') {
+    if (!sbSieve.textContent?.includes('binder')) sbSieve.click();
+    return true;
+  }
   if (location.pathname === '/gulper') {
     if (!gulper.isActive) sbGulper.click();
     return true;
   }
-  if (gulper.isActive) sbGulper.click();
+  if (location.pathname === '/heap') {
+    if (!heapPanel.active) sbHeap.click();
+    return true;
+  }
+  closePanels();
 
-  const match = location.hash.match(/^#(scene|raw)\/(\d+)$/);
+  const match = location.hash.match(/^#(scene|raw|piece)\/(\d+)$/);
   if (!match) return false;
   const [, type, id] = match;
   const numId = Number(id);
@@ -194,10 +279,13 @@ function loadFromRoute() {
     editor.loadScene(numId);
     sbFile.textContent = `Scene #${numId}`;
     sidebar.setActiveSelection(numId, 'scene');
-  } else {
+  } else if (type === 'raw') {
     editor.loadRaw(numId);
     sbFile.textContent = `Raw #${numId}`;
     sidebar.setActiveSelection(numId, 'raw');
+  } else {
+    editor.loadPiece(numId);
+    sbFile.textContent = `Piece #${numId}`;
   }
   return true;
 }
@@ -217,6 +305,17 @@ window.addEventListener('editor:navigate', ((e: CustomEvent) => {
   sbFile.textContent = `Scene #${e.detail.id}`;
   history.replaceState(null, '', `#scene/${e.detail.id}`);
   sidebar.setActiveSelection(e.detail.id, 'scene');
+  sessionActive = false;
+}) as EventListener);
+
+window.addEventListener('heap:open-piece', ((e: CustomEvent) => {
+  const id = Number(e.detail?.id);
+  if (!Number.isFinite(id)) return;
+  closePanels();
+  editor.loadPiece(id);
+  sbFile.textContent = `Piece #${id}`;
+  history.replaceState(null, '', `#piece/${id}`);
+  sidebar.setActiveSelection(id, 'piece');
   sessionActive = false;
 }) as EventListener);
 

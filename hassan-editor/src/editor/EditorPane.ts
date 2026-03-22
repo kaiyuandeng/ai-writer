@@ -15,7 +15,7 @@ export class EditorPane {
   private editorEl: HTMLElement;
   private editor: Editor | null = null;
   private currentId: number | null = null;
-  private currentType: 'scene' | 'raw' = 'scene';
+  private currentType: 'scene' | 'raw' | 'piece' = 'scene';
   private currentProvenance: string = 'GOLD';
   private saveTimeout: ReturnType<typeof setTimeout> | null = null;
   private onContentChange: OnContentChange;
@@ -67,6 +67,7 @@ export class EditorPane {
       this.currentType = 'scene';
       this.currentProvenance = scene.provenance || 'GOLD';
       this.showEditor(scene.content || '');
+      this.sceneNavElement().style.display = '';
       this.updateBadge(scene.provenance || 'GOLD', scene.provenance_meta);
       this.onContentChange(scene.word_count || 0);
       this.sceneNav.setCurrentScene(id);
@@ -85,10 +86,29 @@ export class EditorPane {
       this.currentType = 'raw';
       this.currentProvenance = 'GOLD';
       this.showEditor(file.content || '');
+      this.sceneNavElement().style.display = 'none';
       this.updateBadge('GOLD', null);
       this.onContentChange(file.word_count || 0);
     } catch (err) {
       console.error('Failed to load raw file:', err);
+    }
+  }
+
+  async loadPiece(id: number) {
+    try {
+      const res = await fetch(`/api/heap/pieces/${id}`);
+      const piece = await res.json();
+      this.currentId = id;
+      this.currentType = 'piece';
+      this.currentProvenance = piece.provenance || 'GOLD';
+      this.showEditor(piece.content || '');
+      this.sceneNavElement().style.display = 'none';
+      this.updateBadge(piece.provenance || 'GOLD', null);
+      this.onContentChange(piece.word_count || 0);
+      this.diffOverlay.setScene(-1);
+      this.diffOverlay.setCurrentContent(piece.content || '');
+    } catch (err) {
+      console.error('Failed to load piece:', err);
     }
   }
 
@@ -190,6 +210,12 @@ export class EditorPane {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ content: text }),
         });
+      } else if (this.currentType === 'piece') {
+        await fetch(`/api/heap/pieces/${this.currentId}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ content: text }),
+        });
       }
       // Raw files are read-only for now (source material)
       window.dispatchEvent(new CustomEvent('editor:saved'));
@@ -198,6 +224,10 @@ export class EditorPane {
     } finally {
       this.saving = false;
     }
+  }
+
+  private sceneNavElement(): HTMLElement {
+    return this.containerEl.querySelector('.scene-nav') as HTMLElement;
   }
 
   private textToHtml(text: string): string {
