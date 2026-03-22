@@ -4,7 +4,7 @@ import fs from 'fs';
 import path from 'path';
 
 const MAX_BACKUPS = 20;
-const BACKUP_INTERVAL_MS = 30 * 60 * 1000; // 30 minutes
+const BACKUP_INTERVAL_MS = 5 * 60 * 1000; // 5 minutes
 
 function timestamp(): string {
   return new Date().toISOString().replace(/[:.]/g, '-');
