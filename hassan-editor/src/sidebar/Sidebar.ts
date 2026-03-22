@@ -1,13 +1,15 @@
 import { SceneRef, SourceTextRef } from '../entities';
 
-export type OnSceneSelect = (sceneId: number, type: 'scene' | 'raw') => void;
+type PieceRef = { id: number; title: string; kind: string; conviction: number; word_count: number };
+
+export type OnSceneSelect = (sceneId: number, type: 'scene' | 'raw' | 'piece') => void;
 
 export class Sidebar {
   private el: HTMLElement;
   private treeEl: HTMLElement;
   private onSelect: OnSceneSelect;
   private expandedDirs: Set<string> = new Set(['scenes']);
-  private pendingActive: { id: number; type: 'scene' | 'raw' } | null = null;
+  private pendingActive: { id: number; type: 'scene' | 'raw' | 'piece' } | null = null;
   private sceneOrderIds: number[] = [];
   private sceneOrderName = '';
 
@@ -37,15 +39,19 @@ export class Sidebar {
 
   async loadTree() {
     try {
-      const res = await fetch('/api/tree');
-      const data = await res.json();
-      this.renderTree(data.movements, data.rawFiles);
+      const [treeRes, piecesRes] = await Promise.all([
+        fetch('/api/tree'),
+        fetch('/api/heap/pieces?conviction_min=70'),
+      ]);
+      const data = await treeRes.json();
+      const pieces = (await piecesRes.json()) as PieceRef[];
+      this.renderTree(data.movements, data.rawFiles, pieces);
     } catch (err) {
       this.treeEl.innerHTML = `<div style="padding:16px;color:var(--text-dim)">Failed to load. Is the server running?</div>`;
     }
   }
 
-  private renderTree(movements: Record<string, SceneRef[]>, rawFiles: SourceTextRef[]) {
+  private renderTree(movements: Record<string, SceneRef[]>, rawFiles: SourceTextRef[], pieces: PieceRef[]) {
     this.treeEl.innerHTML = '';
 
     // Scenes section
@@ -99,6 +105,16 @@ export class Sidebar {
       for (const file of rawFiles) {
         const row = this.createRawRow(file, 1);
         rawSection.children.appendChild(row);
+      }
+    }
+
+    if (pieces.length > 0) {
+      const piecesSection = this.createFolderNode(`Heap (${pieces.length})`, 'pieces', 0);
+      this.treeEl.appendChild(piecesSection.wrapper);
+      const sorted = [...pieces].sort((a, b) => b.conviction - a.conviction);
+      for (const piece of sorted.slice(0, 120)) {
+        const row = this.createPieceRow(piece, 1);
+        piecesSection.children.appendChild(row);
       }
     }
 
@@ -220,15 +236,51 @@ export class Sidebar {
     return row;
   }
 
+  private createPieceRow(piece: PieceRef, depth: number): HTMLElement {
+    const row = document.createElement('div');
+    row.className = 'tree-node-row';
+    row.dataset.pieceId = String(piece.id);
+
+    for (let i = 0; i < depth; i++) {
+      const indent = document.createElement('span');
+      indent.className = 'tree-indent';
+      row.appendChild(indent);
+    }
+
+    const icon = document.createElement('span');
+    icon.className = 'tree-icon file-default';
+    icon.textContent = '◆';
+    row.appendChild(icon);
+
+    const label = document.createElement('span');
+    label.className = 'tree-label';
+    label.textContent = `${piece.title || '(untitled)'} [${piece.kind}]`;
+    row.appendChild(label);
+
+    const wc = document.createElement('span');
+    wc.className = 'tree-wordcount';
+    wc.textContent = `c${piece.conviction}`;
+    row.appendChild(wc);
+
+    row.addEventListener('click', () => {
+      this.setActive(row);
+      this.onSelect(piece.id, 'piece');
+    });
+
+    return row;
+  }
+
   private setActive(rowEl: HTMLElement) {
     this.el.querySelectorAll('.tree-node-row.active').forEach(el => el.classList.remove('active'));
     rowEl.classList.add('active');
   }
 
-  setActiveSelection(id: number, type: 'scene' | 'raw') {
+  setActiveSelection(id: number, type: 'scene' | 'raw' | 'piece') {
     const selector = type === 'scene'
       ? `.tree-node-row[data-scene-id="${id}"]`
-      : `.tree-node-row[data-raw-id="${id}"]`;
+      : (type === 'raw'
+        ? `.tree-node-row[data-raw-id="${id}"]`
+        : `.tree-node-row[data-piece-id="${id}"]`);
 
     const row = this.el.querySelector(selector) as HTMLElement | null;
     if (!row) {

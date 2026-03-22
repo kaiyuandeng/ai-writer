@@ -1160,3 +1160,89 @@ describe('Edge Cases', () => {
     expect(list.body.length).toBe(20);
   });
 });
+
+// ==========================================
+// HEAP API
+// ==========================================
+
+describe('Heap API', () => {
+  it('creates, reads, and updates a piece', async () => {
+    const create = await request(app).post('/api/heap/pieces').send({
+      kind: 'scene',
+      title: 'Valentine Arrives',
+      content: 'He asked what to do. The factory shrugged.',
+      conviction: 75,
+      tags: ['valentine', 'origin'],
+      meta: { story_arc: 'B' },
+    });
+    expect(create.status).toBe(201);
+    expect(create.body.word_count).toBe(8);
+
+    const get = await request(app).get(`/api/heap/pieces/${create.body.id}`);
+    expect(get.status).toBe(200);
+    expect(get.body.title).toBe('Valentine Arrives');
+    expect(Array.isArray(get.body.outgoing)).toBe(true);
+    expect(Array.isArray(get.body.incoming)).toBe(true);
+
+    const update = await request(app).put(`/api/heap/pieces/${create.body.id}`).send({
+      conviction: 90,
+      content: 'He asked what to do. The factory shrugged. Then he walked.',
+    });
+    expect(update.status).toBe(200);
+    expect(update.body.ok).toBe(true);
+
+    const piece = db.prepare('SELECT conviction, word_count FROM pieces WHERE id = ?').get(create.body.id) as any;
+    expect(piece.conviction).toBe(90);
+    expect(piece.word_count).toBe(11);
+  });
+
+  it('creates associations and rejects duplicates', async () => {
+    const a = await request(app).post('/api/heap/pieces').send({
+      kind: 'scene', title: 'A', content: 'A text', conviction: 80,
+    });
+    const b = await request(app).post('/api/heap/pieces').send({
+      kind: 'scene', title: 'B', content: 'B text', conviction: 82,
+    });
+
+    const first = await request(app).post('/api/heap/associations').send({
+      source_id: a.body.id,
+      target_id: b.body.id,
+      kind: 'follows',
+      label: 'A comes before B',
+    });
+    expect(first.status).toBe(201);
+
+    const dupe = await request(app).post('/api/heap/associations').send({
+      source_id: a.body.id,
+      target_id: b.body.id,
+      kind: 'follows',
+      label: 'duplicate should fail',
+    });
+    expect(dupe.status).toBe(409);
+  });
+
+  it('returns sieve and graph payloads', async () => {
+    const p1 = await request(app).post('/api/heap/pieces').send({
+      kind: 'scene', title: 'High Conviction', content: 'gold node', conviction: 95,
+    });
+    const p2 = await request(app).post('/api/heap/pieces').send({
+      kind: 'scene', title: 'Also High', content: 'also gold', conviction: 88,
+    });
+    await request(app).post('/api/heap/associations').send({
+      source_id: p1.body.id,
+      target_id: p2.body.id,
+      kind: 'echoes',
+    });
+
+    const sieve = await request(app).get('/api/heap/sieve?min_conviction=80');
+    expect(sieve.status).toBe(200);
+    expect(Array.isArray(sieve.body.nodes)).toBe(true);
+    expect(Array.isArray(sieve.body.links)).toBe(true);
+
+    const graph = await request(app).get('/api/heap/graph?min_conviction=80');
+    expect(graph.status).toBe(200);
+    expect(Array.isArray(graph.body.nodes)).toBe(true);
+    expect(Array.isArray(graph.body.links)).toBe(true);
+    expect(Array.isArray(graph.body.legend)).toBe(true);
+  });
+});

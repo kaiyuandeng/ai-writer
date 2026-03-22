@@ -6,6 +6,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { STORY_ARCS, STATUSES, PROVENANCES } from '../src/entities';
 import { buildGoldSanity, buildStoryHealth } from './analysis/storyHealth';
+import { createHeapRouter } from './heap';
 
 export function countWords(text: string): number {
   if (!text || !text.trim()) return 0;
@@ -26,6 +27,7 @@ export function createApp(db: Database.Database, contentRoot: string) {
 
   app.use(cors());
   app.use(express.json({ limit: '10mb' }));
+  app.use('/api/heap', createHeapRouter(db));
 
   const buildGraphData = () => {
     const scenes = db.prepare(

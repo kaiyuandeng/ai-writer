@@ -218,3 +218,40 @@ export interface SceneGraph {
   links: SceneGraphLink[];
   legends: SceneGraphOrderLegend[];
 }
+
+// ==========================================
+// HEAP — generalized writing primitives
+// ==========================================
+
+export interface Piece {
+  id: number;
+  kind: string;
+  title: string;
+  content: string;
+  word_count: number;
+  conviction: number;
+  provenance: string;
+  tags: string; // JSON array
+  meta: string; // JSON object
+  migrated_from_table: string | null;
+  migrated_from_id: number | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Association {
+  id: number;
+  source_id: number;
+  target_id: number;
+  kind: string;
+  label: string;
+  weight: number;
+  meta: string; // JSON object
+  created_at: string;
+}
+
+export interface HeapGraph {
+  nodes: Piece[];
+  links: Association[];
+  legend: { kind: string; count: number }[];
+}
