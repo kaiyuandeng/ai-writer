@@ -2,7 +2,7 @@ import path from 'path';
 import db, { DB_PATH } from './db.js';
 import { createApp } from './app.js';
 
-const PORT = 9001;
+const PORT = 7771;
 const CONTENT_ROOT = path.resolve(import.meta.dirname, '../../opus');
 
 const app = createApp(db, CONTENT_ROOT);

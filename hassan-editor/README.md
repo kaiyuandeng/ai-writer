@@ -41,9 +41,8 @@ npm run dev
 
 | Service | URL |
 |---------|-----|
-| App | http://localhost:9000/ |
-| API | http://localhost:9001 |
-| Test Dashboard | http://localhost:9002/tests/ |
+| App | http://localhost:7710/ |
+| API | http://localhost:7771 |
 
 ## Test
 

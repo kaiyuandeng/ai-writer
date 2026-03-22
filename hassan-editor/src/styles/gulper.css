@@ -4,7 +4,7 @@
   display: none;
   flex-direction: column;
   flex: 1;
-  height: calc(100vh - var(--statusbar-height));
+  height: 100%;
   background: var(--bg);
   padding: 48px 32px;
   overflow-y: auto;
@@ -219,6 +219,19 @@
   color: var(--cabal-orange);
 }
 
+.gulper-log-error {
+  color: #c47a5a;
+}
+
+.gulper-log-error .gulper-log-reason {
+  display: block;
+  margin-left: 70px;
+  margin-top: 2px;
+  font-size: 10px;
+  color: #8a5a42;
+  opacity: 0.85;
+}
+
 .gulper-log-done {
   color: var(--text);
   margin-top: 8px;
@@ -255,15 +268,4 @@
   opacity: 0.6;
 }
 
-/* Hide other panes when gulper is active */
-body.gulper-mode .sidebar {
-  display: none;
-}
-
-body.gulper-mode .editor-container {
-  display: none;
-}
-
-body.gulper-mode .kanban {
-  display: none;
-}
+/* gulper-mode body class retained for potential overrides */

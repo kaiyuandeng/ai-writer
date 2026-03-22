@@ -5,6 +5,20 @@
  */
 import { GulpResult } from '../entities';
 
+type ThoughtKeyEvent = Pick<KeyboardEvent, 'key' | 'metaKey' | 'ctrlKey' | 'shiftKey'>;
+
+export function shouldSubmitThoughtOnKeydown(event: ThoughtKeyEvent): boolean {
+  return event.key === 'Enter' && !event.shiftKey && (event.metaKey || event.ctrlKey);
+}
+
+export function buildGulperErrorMessage(status: number, payload: unknown): string {
+  if (payload && typeof payload === 'object' && 'error' in payload) {
+    const error = (payload as { error?: unknown }).error;
+    if (typeof error === 'string' && error.trim().length > 0) return error;
+  }
+  return `request failed (${status})`;
+}
+
 export class Gulper {
   private el: HTMLElement;
   private dropZone: HTMLElement;
@@ -80,9 +94,9 @@ export class Gulper {
       this.gulpThought(text, classSelect.value);
     });
 
-    // Cmd+Enter to submit
+    // Cmd+Enter (macOS) or Ctrl+Enter (Windows/Linux) to submit
     this.thoughtArea.addEventListener('keydown', (e) => {
-      if (e.metaKey && e.key === 'Enter') {
+      if (shouldSubmitThoughtOnKeydown(e)) {
         e.preventDefault();
         gulpBtn.click();
       }
@@ -152,7 +166,8 @@ export class Gulper {
           provenance: 'GOLD',
         }),
       });
-      const data = await res.json();
+      const data = await this.readJsonSafe(res);
+      if (!res.ok) throw new Error(buildGulperErrorMessage(res.status, data));
 
       const result: GulpResult = {
         filename,
@@ -165,8 +180,8 @@ export class Gulper {
       this.log('stored', `${classification} → ${words}w · GOLD · ${data.stored_as || 'gulped'}`);
       this.thoughtArea.value = '';
       this.renderSummary();
-    } catch {
-      this.log('error', 'failed to store thought');
+    } catch (err) {
+      this.logError('failed to store thought', this.formatError(err));
     }
   }
 
@@ -266,7 +281,8 @@ export class Gulper {
           word_count: words,
         }),
       });
-      const data = await res.json();
+      const data = await this.readJsonSafe(res);
+      if (!res.ok) throw new Error(buildGulperErrorMessage(res.status, data));
 
       const result: GulpResult = {
         filename: file.name,
@@ -278,7 +294,7 @@ export class Gulper {
       this.results.push(result);
       this.log('stored', `${file.name} → ${classification} · ${words.toLocaleString()}w${relations.length ? ' · related to: ' + relations.join(', ') : ''}`);
     } catch (err) {
-      this.log('error', `failed to store ${file.name}`);
+      this.logError(`failed to store ${file.name}`, this.formatError(err));
     }
   }
 
@@ -352,6 +368,16 @@ export class Gulper {
     this.logEl.scrollTop = this.logEl.scrollHeight;
   }
 
+  private logError(summary: string, reason: string) {
+    const line = document.createElement('div');
+    line.className = 'gulper-log-line gulper-log-error';
+    line.innerHTML =
+      `<span class="gulper-log-type">error</span> ${summary}` +
+      `<span class="gulper-log-reason">${reason}</span>`;
+    this.logEl.appendChild(line);
+    this.logEl.scrollTop = this.logEl.scrollHeight;
+  }
+
   private renderSummary() {
     if (this.results.length === 0) return;
 
@@ -382,5 +408,18 @@ export class Gulper {
     if (bytes < 1024) return `${bytes}B`;
     if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)}KB`;
     return `${(bytes / (1024 * 1024)).toFixed(1)}MB`;
+  }
+
+  private async readJsonSafe(response: Response): Promise<any> {
+    try {
+      return await response.json();
+    } catch {
+      return {};
+    }
+  }
+
+  private formatError(err: unknown): string {
+    if (err instanceof Error && err.message) return err.message;
+    return 'unknown error';
   }
 }

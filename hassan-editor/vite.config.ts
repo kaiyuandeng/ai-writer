@@ -2,10 +2,11 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   server: {
-    port: 9000,
+    port: 7710,
+    strictPort: true,
     proxy: {
-      '/api': 'http://localhost:9001',
-      '/compiled': 'http://localhost:9001',
+      '/api': 'http://localhost:7771',
+      '/compiled': 'http://localhost:7771',
     },
   },
   appType: 'spa',

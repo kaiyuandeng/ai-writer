@@ -36,7 +36,8 @@
   --prose-width:  38em;
 
   /* Layout */
-  --sidebar-width: 240px;
+  --tool-dir-width: 140px;
+  --sidebar-width: 220px;
   --statusbar-height: 24px;
 }
 

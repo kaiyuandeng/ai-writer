@@ -1,4 +1,4 @@
-/* Hassan Editor — Status Bar — Tufte minimal */
+/* Hassan Editor — Status Bar — Tufte minimal (metadata only) */
 
 .statusbar {
   height: var(--statusbar-height);
@@ -34,18 +34,4 @@
 
 .statusbar-unsaved {
   color: var(--cabal-orange);
-}
-
-.statusbar-focus-btn {
-  cursor: pointer;
-  padding: 2px 6px;
-  border: none;
-  background: none;
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: 10px;
-}
-
-.statusbar-focus-btn:hover {
-  color: var(--cabal-purple);
 }

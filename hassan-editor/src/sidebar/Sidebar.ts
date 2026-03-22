@@ -7,6 +7,7 @@ export type OnSceneSelect = (sceneId: number, type: 'scene' | 'raw' | 'piece') =
 export class Sidebar {
   private el: HTMLElement;
   private treeEl: HTMLElement;
+  private sourceMetricEl: HTMLElement;
   private onSelect: OnSceneSelect;
   private expandedDirs: Set<string> = new Set(['scenes']);
   private pendingActive: { id: number; type: 'scene' | 'raw' | 'piece' } | null = null;
@@ -28,6 +29,10 @@ export class Sidebar {
       </div>
     `;
     this.el.appendChild(header);
+
+    this.sourceMetricEl = document.createElement('div');
+    this.sourceMetricEl.className = 'source-metric';
+    this.el.appendChild(this.sourceMetricEl);
 
     this.treeEl = document.createElement('div');
     this.treeEl.className = 'tree';
@@ -97,9 +102,12 @@ export class Sidebar {
     }
     }
 
+    // Source metric
+    this.renderSourceMetric(rawFiles);
+
     // Raw files section
     if (rawFiles.length > 0) {
-      const rawSection = this.createFolderNode(`Source (${rawFiles.length})`, 'raw', 0);
+      const rawSection = this.createFolderNode('Source', 'raw', 0);
       this.treeEl.appendChild(rawSection.wrapper);
 
       for (const file of rawFiles) {
@@ -297,6 +305,16 @@ export class Sidebar {
     this.sceneOrderName = orderName;
     this.sceneOrderIds = [...orderedIds];
     this.loadTree();
+  }
+
+  private renderSourceMetric(rawFiles: SourceTextRef[]) {
+    const count = rawFiles.length;
+    const totalWords = rawFiles.reduce((sum, f) => sum + (f.word_count || 0), 0);
+
+    this.sourceMetricEl.innerHTML =
+      `<div class="source-metric-number">${count}</div>` +
+      `<div class="source-metric-label">sources</div>` +
+      `<div class="source-metric-words">${this.formatWordCount(totalWords)}w in the pile</div>`;
   }
 
   private formatMovement(name: string): string {

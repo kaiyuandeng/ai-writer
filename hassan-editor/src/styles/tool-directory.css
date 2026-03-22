@@ -1,0 +1,78 @@
+/* Hassan Editor — Tool Directory — Tufte minimal */
+
+.tool-directory {
+  width: var(--tool-dir-width);
+  height: 100%;
+  background: var(--bg);
+  border-right: 1px solid rgba(90, 87, 80, 0.12);
+  padding: 20px 0;
+  flex-shrink: 0;
+  overflow-y: auto;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.tool-dir-title {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  padding: 0 20px 20px;
+  letter-spacing: 0.02em;
+}
+
+.tool-dir-category {
+  padding: 0 0 12px;
+}
+
+.tool-dir-category-header {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 8px 20px 4px;
+}
+
+.tool-dir-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 20px;
+  cursor: pointer;
+  transition: color 120ms ease;
+}
+
+.tool-dir-item-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+.tool-dir-item-shortcut {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  color: var(--text-muted);
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+
+.tool-dir-item:hover .tool-dir-item-shortcut {
+  opacity: 0.5;
+}
+
+.tool-dir-item:hover .tool-dir-item-label {
+  color: var(--text);
+}
+
+.tool-dir-item.active .tool-dir-item-label {
+  color: var(--cabal-purple);
+}
+
+.tool-dir-item.active .tool-dir-item-shortcut {
+  opacity: 0.5;
+  color: var(--cabal-purple);
+}
