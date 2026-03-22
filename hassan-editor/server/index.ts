@@ -1,14 +1,35 @@
 import path from 'path';
-import db, { DB_PATH } from './db.js';
-import { createApp } from './app.js';
+import { DbService } from './services/db.service';
+import { createApp } from './app';
 
 const PORT = 7771;
 const CONTENT_ROOT = path.resolve(import.meta.dirname, '../../opus');
 
-const app = createApp(db, CONTENT_ROOT);
+const dbService = new DbService();
+const app = createApp(dbService.db, CONTENT_ROOT);
+
+app.post('/api/backup', async (_req, res) => {
+  try {
+    const dest = await dbService.backup();
+    res.json({ ok: true, file: path.basename(dest) });
+  } catch (err: any) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.get('/api/backups', (_req, res) => {
+  res.json(dbService.listBackups());
+});
 
 app.listen(PORT, () => {
   console.log(`Hassan Editor server on http://localhost:${PORT}`);
-  console.log(`Database: ${DB_PATH}`);
   console.log(`Content root: ${CONTENT_ROOT}`);
 });
+
+function shutdown() {
+  console.log('Shutting down — closing database...');
+  dbService.close();
+  process.exit(0);
+}
+process.on('SIGTERM', shutdown);
+process.on('SIGINT', shutdown);

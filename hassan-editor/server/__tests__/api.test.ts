@@ -928,7 +928,6 @@ describe('POST /api/gulp', () => {
       content: 'The desert stretched out before Pace like a red wound on the earth.',
       file_type: 'txt',
       file_size: 66,
-      classification: 'prose',
       word_count: 13,
     });
 
@@ -942,13 +941,11 @@ describe('POST /api/gulp', () => {
       content: 'Valentine is the ninth automaton in the line. He arrives at the island.',
       file_type: 'md',
       file_size: 72,
-      classification: 'research',
       word_count: 13,
     });
 
     const gulped = db.prepare('SELECT * FROM gulped WHERE filename = ?').get('notes.md') as any;
     expect(gulped).toBeTruthy();
-    expect(gulped.classification).toBe('research');
 
     const raw = db.prepare('SELECT * FROM raw_files WHERE filename = ?').get('notes.md') as any;
     expect(raw).toBeTruthy();
@@ -961,7 +958,6 @@ describe('POST /api/gulp', () => {
       content: '[PDF: diagram.pdf, 2.1MB]',
       file_type: 'pdf',
       file_size: 2200000,
-      classification: 'research',
       word_count: 4,
     });
 
@@ -985,8 +981,57 @@ describe('GET /api/gulped', () => {
 
     const res = await request(app).get('/api/gulped');
     expect(res.body.length).toBe(2);
-    // Should not include full content in list
     expect(res.body[0].filename).toBeTruthy();
+  });
+
+  it('does not return classification field', async () => {
+    await request(app).post('/api/gulp').send({
+      filename: 'no-class.md', content: 'just material', file_type: 'md',
+      file_size: 13, word_count: 2,
+    });
+    const res = await request(app).get('/api/gulped');
+    const item = res.body.find((g: any) => g.filename === 'no-class.md');
+    expect(item).toBeTruthy();
+    expect(item).not.toHaveProperty('classification');
+  });
+});
+
+describe('POST /api/gulp (no classification)', () => {
+  it('stores material without classification', async () => {
+    const res = await request(app).post('/api/gulp').send({
+      filename: 'raw-material.md',
+      content: 'Some words that are just material in the pile.',
+      file_type: 'md',
+      file_size: 46,
+      word_count: 9,
+    });
+    expect(res.status).toBe(201);
+    expect(res.body.stored_as).toBe('gulped');
+  });
+
+  it('defaults provenance to GOLD', async () => {
+    const res = await request(app).post('/api/gulp').send({
+      filename: 'thought-bare.md',
+      content: 'a bare thought',
+      file_type: 'md',
+      file_size: 14,
+      word_count: 3,
+    });
+    expect(res.status).toBe(201);
+    const row = db.prepare('SELECT provenance FROM gulped WHERE id = ?').get(res.body.id) as any;
+    expect(row.provenance).toBe('GOLD');
+  });
+
+  it('computes word count from content when not provided', async () => {
+    const res = await request(app).post('/api/gulp').send({
+      filename: 'auto-count.md',
+      content: 'one two three four five six seven eight nine ten eleven twelve',
+      file_type: 'md',
+      file_size: 62,
+    });
+    expect(res.status).toBe(201);
+    const row = db.prepare('SELECT word_count FROM gulped WHERE id = ?').get(res.body.id) as any;
+    expect(row.word_count).toBe(12);
   });
 });
 
@@ -1023,7 +1068,7 @@ describe('GOLD invariant', () => {
   it('DB trigger prevents raw SQL deletion of GOLD gulped content', async () => {
     await request(app).post('/api/gulp').send({
       filename: 'sacred-thought.md', content: 'my original thought', file_type: 'md',
-      file_size: 19, classification: 'thought', word_count: 3, provenance: 'GOLD',
+      file_size: 19, word_count: 3, provenance: 'GOLD',
     });
     expect(() => {
       db.prepare("DELETE FROM gulped WHERE filename = 'sacred-thought.md'").run();
@@ -1033,7 +1078,7 @@ describe('GOLD invariant', () => {
   it('DB trigger prevents raw SQL content overwrite on GOLD gulped', async () => {
     await request(app).post('/api/gulp').send({
       filename: 'locked-thought.md', content: 'untouchable prose', file_type: 'md',
-      file_size: 17, classification: 'thought', word_count: 2, provenance: 'GOLD',
+      file_size: 17, word_count: 2, provenance: 'GOLD',
     });
     expect(() => {
       db.prepare("UPDATE gulped SET content = 'replaced' WHERE filename = 'locked-thought.md'").run();
@@ -1043,7 +1088,7 @@ describe('GOLD invariant', () => {
   it('API refuses to delete GOLD gulped content', async () => {
     const gulp = await request(app).post('/api/gulp').send({
       filename: 'gold-fragment.md', content: 'Author wrote this', file_type: 'md',
-      file_size: 17, classification: 'scene', word_count: 3, provenance: 'GOLD',
+      file_size: 17, word_count: 3, provenance: 'GOLD',
     });
     const res = await request(app).delete(`/api/gulped/${gulp.body.id}`);
     expect(res.status).toBe(403);
@@ -1053,7 +1098,7 @@ describe('GOLD invariant', () => {
   it('API allows deletion of non-GOLD gulped content', async () => {
     const gulp = await request(app).post('/api/gulp').send({
       filename: 'ai-draft.md', content: 'machine wrote this', file_type: 'md',
-      file_size: 18, classification: 'scene', word_count: 3, provenance: 'EXTRAPOLATED',
+      file_size: 18, word_count: 3, provenance: 'EXTRAPOLATED',
     });
     const res = await request(app).delete(`/api/gulped/${gulp.body.id}`);
     expect(res.status).toBe(200);
@@ -1070,11 +1115,11 @@ describe('GOLD invariant', () => {
     });
     await request(app).post('/api/gulp').send({
       filename: 'gold-note.md', content: 'Author note', file_type: 'md',
-      file_size: 11, classification: 'thought', word_count: 2, provenance: 'GOLD',
+      file_size: 11, word_count: 2, provenance: 'GOLD',
     });
     await request(app).post('/api/gulp').send({
       filename: 'ai-note.md', content: 'AI summary', file_type: 'md',
-      file_size: 10, classification: 'research', word_count: 2, provenance: 'EXTRAPOLATED',
+      file_size: 10, word_count: 2, provenance: 'EXTRAPOLATED',
     });
 
     const res = await request(app).get('/api/gold');
@@ -1092,7 +1137,6 @@ describe('GOLD invariant', () => {
       content: 'What if the automaton remembers being human?',
       file_type: 'md',
       file_size: 44,
-      classification: 'thought',
       word_count: 8,
       provenance: 'GOLD',
     });

@@ -76,22 +76,13 @@ export class Gulper {
     const thoughtActions = document.createElement('div');
     thoughtActions.className = 'gulper-thought-actions';
 
-    const classSelect = document.createElement('select');
-    classSelect.className = 'gulper-thought-classify';
-    for (const c of ['thought', 'quote', 'scene', 'freewrite', 'character', 'world-building', 'plot', 'research']) {
-      const opt = document.createElement('option');
-      opt.value = c;
-      opt.textContent = c;
-      classSelect.appendChild(opt);
-    }
-
     const gulpBtn = document.createElement('button');
     gulpBtn.className = 'gulper-thought-btn';
     gulpBtn.textContent = '⌾ gulp it';
     gulpBtn.addEventListener('click', () => {
       const text = this.thoughtArea.value.trim();
       if (!text) return;
-      this.gulpThought(text, classSelect.value);
+      this.gulpThought(text);
     });
 
     // Cmd+Enter (macOS) or Ctrl+Enter (Windows/Linux) to submit
@@ -102,7 +93,6 @@ export class Gulper {
       }
     });
 
-    thoughtActions.appendChild(classSelect);
     thoughtActions.appendChild(gulpBtn);
     thoughtSection.appendChild(thoughtLabel);
     thoughtSection.appendChild(this.thoughtArea);
@@ -145,12 +135,12 @@ export class Gulper {
     return this.el.classList.contains('active');
   }
 
-  private async gulpThought(text: string, classification: string) {
+  private async gulpThought(text: string) {
     const words = text.trim().split(/\s+/).filter(Boolean).length;
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
     const filename = `thought-${timestamp}.md`;
 
-    this.log('gulping', `${classification} · ${words}w`);
+    this.log('gulping', `${words}w`);
 
     try {
       const res = await fetch('/api/gulp', {
@@ -161,7 +151,6 @@ export class Gulper {
           content: text,
           file_type: 'md',
           file_size: new Blob([text]).size,
-          classification,
           word_count: words,
           provenance: 'GOLD',
         }),
@@ -171,13 +160,12 @@ export class Gulper {
 
       const result: GulpResult = {
         filename,
-        type: classification,
         words,
         stored_as: data.stored_as || 'gulped',
         related_to: [],
       };
       this.results.push(result);
-      this.log('stored', `${classification} → ${words}w · GOLD · ${data.stored_as || 'gulped'}`);
+      this.log('stored', `${words}w · GOLD · ${data.stored_as || 'gulped'}`);
       this.thoughtArea.value = '';
       this.renderSummary();
     } catch (err) {
@@ -263,10 +251,6 @@ export class Gulper {
     // Count words
     const words = content.trim().split(/\s+/).filter(Boolean).length;
 
-    // Classify and find relations
-    const classification = this.classify(file.name, content);
-    const relations = await this.findRelations(file.name, content);
-
     // Store via API
     try {
       const res = await fetch('/api/gulp', {
@@ -277,7 +261,6 @@ export class Gulper {
           content,
           file_type: fileType,
           file_size: file.size,
-          classification,
           word_count: words,
         }),
       });
@@ -286,78 +269,15 @@ export class Gulper {
 
       const result: GulpResult = {
         filename: file.name,
-        type: classification,
         words,
         stored_as: data.stored_as || 'raw',
-        related_to: relations,
+        related_to: [],
       };
       this.results.push(result);
-      this.log('stored', `${file.name} → ${classification} · ${words.toLocaleString()}w${relations.length ? ' · related to: ' + relations.join(', ') : ''}`);
+      this.log('stored', `${file.name} · ${words.toLocaleString()}w`);
     } catch (err) {
       this.logError(`failed to store ${file.name}`, this.formatError(err));
     }
-  }
-
-  private classify(filename: string, content: string): string {
-    const lower = filename.toLowerCase();
-    const lowerContent = content.toLowerCase().slice(0, 2000);
-
-    // Feedback/annotations
-    if (lower.includes('nora') || lower.includes('annotated') || lower.includes('feedback')) return 'feedback';
-
-    // World-building
-    if (lower.includes('world') || lower.includes('concept') || lower.includes('lore')) return 'world-building';
-    if (lowerContent.includes('world-build') || lowerContent.includes('worldbuild')) return 'world-building';
-
-    // Plot/structure
-    if (lower.includes('plot') || lower.includes('structure') || lower.includes('outline') || lower.includes('brief')) return 'plot';
-    if (lowerContent.includes('plotline') || lowerContent.includes('scene rubric')) return 'plot';
-
-    // Character sheets
-    if (lower.includes('character') || lower.includes('cast')) return 'character';
-    if (lowerContent.includes('motivation:') && lowerContent.includes('description:')) return 'character';
-
-    // Freewrite / journal
-    if (lower.includes('freewrite') || lower.includes('journal') || lower.includes('diary')) return 'freewrite';
-
-    // Research
-    if (lower.includes('research') || lower.includes('reference') || lower.includes('notes')) return 'research';
-
-    // Prose / manuscript
-    if (lowerContent.includes('chapter') || lowerContent.includes('"') || lowerContent.includes('said')) return 'prose';
-
-    return 'misc';
-  }
-
-  private async findRelations(filename: string, content: string): Promise<string[]> {
-    // Quick keyword match against existing raw files
-    const relations: string[] = [];
-
-    try {
-      const res = await fetch('/api/raw');
-      const rawFiles = await res.json() as { filename: string }[];
-
-      // Check if this file's content mentions any existing file subjects
-      const keywords = this.extractKeywords(content);
-      for (const raw of rawFiles) {
-        const rawName = raw.filename.replace(/\.(txt|md)$/, '').toLowerCase();
-        if (keywords.some(k => rawName.includes(k) || k.includes(rawName))) {
-          relations.push(raw.filename);
-          if (relations.length >= 5) break;
-        }
-      }
-    } catch { /* no relations */ }
-
-    return relations;
-  }
-
-  private extractKeywords(content: string): string[] {
-    // Pull proper nouns and significant words
-    const words = content.slice(0, 5000).match(/[A-Z][a-z]{3,}/g) || [];
-    const unique = [...new Set(words.map(w => w.toLowerCase()))];
-    // Filter common words
-    const stopwords = new Set(['this', 'that', 'with', 'from', 'they', 'their', 'have', 'been', 'were', 'would', 'could', 'should', 'about', 'after', 'before', 'there', 'where', 'when', 'what', 'which', 'these', 'those']);
-    return unique.filter(w => !stopwords.has(w)).slice(0, 20);
   }
 
   private log(type: string, message: string) {
@@ -381,26 +301,15 @@ export class Gulper {
   private renderSummary() {
     if (this.results.length === 0) return;
 
+    const totalWords = this.results.reduce((s, r) => s + r.words, 0);
     const summary = document.createElement('div');
     summary.className = 'gulper-summary';
+    summary.innerHTML =
+      `<div class="gulper-summary-title">gulped</div>` +
+      `<div class="gulper-summary-row"><span class="gulper-summary-count">${this.results.length} items · ${totalWords.toLocaleString()}w</span></div>`;
 
-    const byType: Record<string, GulpResult[]> = {};
-    for (const r of this.results) {
-      if (!byType[r.type]) byType[r.type] = [];
-      byType[r.type].push(r);
-    }
-
-    let html = '<div class="gulper-summary-title">gulped</div>';
-    for (const [type, items] of Object.entries(byType)) {
-      const totalWords = items.reduce((s, i) => s + i.words, 0);
-      html += `<div class="gulper-summary-row"><span class="gulper-summary-type">${type}</span> <span class="gulper-summary-count">${items.length} files · ${totalWords.toLocaleString()}w</span></div>`;
-    }
-
-    summary.innerHTML = html;
     this.logEl.appendChild(summary);
     this.logEl.scrollTop = this.logEl.scrollHeight;
-
-    // Reset for next batch
     this.results = [];
   }
 

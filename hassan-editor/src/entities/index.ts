@@ -20,11 +20,7 @@ export type Status = (typeof STATUSES)[number];
 export const PROVENANCES = ['GOLD', 'EDITED', 'EXTRAPOLATED'] as const;
 export type Provenance = (typeof PROVENANCES)[number];
 
-export const CLASSIFICATIONS = [
-  'prose', 'plot', 'character', 'world-building',
-  'feedback', 'freewrite', 'research', 'misc',
-] as const;
-export type Classification = (typeof CLASSIFICATIONS)[number];
+/** @deprecated classification removed — all material is equal */
 
 // ==========================================
 // SCENE — the atomic unit of the novel
@@ -114,7 +110,6 @@ export interface GulpedFile {
   content: string;
   file_type: string;
   file_size: number;
-  classification: Classification;
   word_count: number;
   relations: string | null;
   provenance: Provenance;
@@ -124,7 +119,6 @@ export interface GulpedFile {
 /** Client-side result from a gulp operation */
 export interface GulpResult {
   filename: string;
-  type: string;
   words: number;
   stored_as: string;
   related_to: string[];

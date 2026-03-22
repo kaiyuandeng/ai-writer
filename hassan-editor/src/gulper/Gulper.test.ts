@@ -27,4 +27,16 @@ describe('buildGulperErrorMessage', () => {
   it('falls back to status code when error is missing', () => {
     expect(buildGulperErrorMessage(503, { message: 'upstream failed' })).toBe('request failed (503)');
   });
+
+  it('falls back when payload is null', () => {
+    expect(buildGulperErrorMessage(500, null)).toBe('request failed (500)');
+  });
+
+  it('falls back when error is empty string', () => {
+    expect(buildGulperErrorMessage(422, { error: '  ' })).toBe('request failed (422)');
+  });
+
+  it('falls back when payload is not an object', () => {
+    expect(buildGulperErrorMessage(500, 'string')).toBe('request failed (500)');
+  });
 });

@@ -135,25 +135,9 @@
 
 .gulper-thought-actions {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   margin-top: 10px;
-}
-
-.gulper-thought-classify {
-  background: transparent;
-  border: 1px solid var(--text-muted);
-  color: var(--text);
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.04em;
-  padding: 6px 12px;
-  cursor: pointer;
-}
-
-.gulper-thought-classify:focus {
-  outline: none;
-  border-color: var(--cabal-purple);
 }
 
 .gulper-thought-btn {
@@ -257,10 +241,6 @@
   justify-content: space-between;
   padding: 2px 0;
   color: var(--text-muted);
-}
-
-.gulper-summary-type {
-  color: var(--text);
 }
 
 .gulper-summary-count {
